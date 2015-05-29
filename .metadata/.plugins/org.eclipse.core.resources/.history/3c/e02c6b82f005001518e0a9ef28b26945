@@ -30,7 +30,7 @@ public class Calculate extends JPanel{
 		
 		
 		GridBagConstraints mengrid = new GridBagConstraints();
-		mengrid.gridx = 0 ;
+		mengrid.gridx = 1 ;
 		mengrid.gridy = 0 ;
 		mengrid.gridheight = 1 ;
 		mengrid.gridwidth = 1 ;
@@ -41,7 +41,7 @@ public class Calculate extends JPanel{
 		add(men,mengrid);
 		
 		GridBagConstraints menbuttongrid = new GridBagConstraints();
-		menbuttongrid.gridx = 1 ;
+		menbuttongrid.gridx = 2 ;
 		menbuttongrid.gridy = 0 ;
 		menbuttongrid.gridheight = 1 ;
 		menbuttongrid.gridwidth = 2 ;
@@ -70,10 +70,10 @@ public class Calculate extends JPanel{
 		add(wemenbutton,wemenbuttongrid);
 		
 		GridBagConstraints yearsgrid = new GridBagConstraints();
-		yearsgrid.gridx = 0 ;
+		yearsgrid.gridx = 1 ;
 		yearsgrid.gridy = 1 ;
 		yearsgrid.gridheight = 1 ;
-		yearsgrid.gridwidth = 3 ;
+		yearsgrid.gridwidth = 1 ;
 		yearsgrid.fill = GridBagConstraints.NONE;
 		yearsgrid.anchor = GridBagConstraints.CENTER;
 		add(years,yearsgrid);

@@ -37,43 +37,43 @@ public class Calculate extends JPanel{
 		mengrid.weightx = 0;
 		mengrid.weighty = 0;
 		mengrid.fill = GridBagConstraints.NONE;
-		mengrid.anchor = GridBagConstraints.CENTER;
+		mengrid.anchor = GridBagConstraints.WEST;
 		add(men,mengrid);
 		
 		GridBagConstraints menbuttongrid = new GridBagConstraints();
 		menbuttongrid.gridx = 1 ;
 		menbuttongrid.gridy = 0 ;
 		menbuttongrid.gridheight = 1 ;
-		menbuttongrid.gridwidth = 2 ;
+		menbuttongrid.gridwidth = 1 ;
 		menbuttongrid.weightx = 0;
 		menbuttongrid.weighty = 0;
 		menbuttongrid.fill = GridBagConstraints.NONE;
-		menbuttongrid.anchor = GridBagConstraints.CENTER;
+		menbuttongrid.anchor = GridBagConstraints.WEST;
 		add(menbutton,menbuttongrid);
 		
 		GridBagConstraints wemengrid = new GridBagConstraints();
-		wemengrid.gridx = 4 ;
+		wemengrid.gridx = 50 ;
 		wemengrid.gridy = 0 ;
 		wemengrid.gridheight = 1 ;
 		wemengrid.gridwidth = 1 ;
 		wemengrid.fill = GridBagConstraints.NONE;
-		wemengrid.anchor = GridBagConstraints.CENTER;
+		wemengrid.anchor = GridBagConstraints.WEST;
 		add(wemen,wemengrid);
 		
 		GridBagConstraints wemenbuttongrid = new GridBagConstraints();
-		wemenbuttongrid.gridx = 5 ;
+		wemenbuttongrid.gridx = 51 ;
 		wemenbuttongrid.gridy = 0 ;
 		wemenbuttongrid.gridheight = 1 ;
-		wemenbuttongrid.gridwidth = 2 ;
+		wemenbuttongrid.gridwidth = 1 ;
 		wemenbuttongrid.fill = GridBagConstraints.NONE;
-		wemenbuttongrid.anchor = GridBagConstraints.CENTER;
+		wemenbuttongrid.anchor = GridBagConstraints.WEST;
 		add(wemenbutton,wemenbuttongrid);
 		
 		GridBagConstraints yearsgrid = new GridBagConstraints();
 		yearsgrid.gridx = 0 ;
 		yearsgrid.gridy = 1 ;
 		yearsgrid.gridheight = 1 ;
-		yearsgrid.gridwidth = 3 ;
+		yearsgrid.gridwidth = 1 ;
 		yearsgrid.fill = GridBagConstraints.NONE;
 		yearsgrid.anchor = GridBagConstraints.CENTER;
 		add(years,yearsgrid);

@@ -7,8 +7,8 @@ public class Calculate extends JPanel{
 		double BMI;//18.5~24
 	
 	public Calculate(){
-		JLabel men = new JLabel("男 ");
-		JLabel wemen = new JLabel("女 ");
+		JLabel men = new JLabel("男");
+		JLabel wemen = new JLabel("女");
 		JLabel years = new JLabel("年齡 ： ");
 		JLabel weight = new JLabel("體重 ： ");
 		JLabel height = new JLabel("身高 ： ");
@@ -34,8 +34,6 @@ public class Calculate extends JPanel{
 		mengrid.gridy = 0 ;
 		mengrid.gridheight = 1 ;
 		mengrid.gridwidth = 1 ;
-		mengrid.weightx = 0;
-		mengrid.weighty = 0;
 		mengrid.fill = GridBagConstraints.NONE;
 		mengrid.anchor = GridBagConstraints.CENTER;
 		add(men,mengrid);
@@ -44,15 +42,13 @@ public class Calculate extends JPanel{
 		menbuttongrid.gridx = 1 ;
 		menbuttongrid.gridy = 0 ;
 		menbuttongrid.gridheight = 1 ;
-		menbuttongrid.gridwidth = 2 ;
-		menbuttongrid.weightx = 0;
-		menbuttongrid.weighty = 0;
+		menbuttongrid.gridwidth = 1 ;
 		menbuttongrid.fill = GridBagConstraints.NONE;
 		menbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(menbutton,menbuttongrid);
 		
 		GridBagConstraints wemengrid = new GridBagConstraints();
-		wemengrid.gridx = 4 ;
+		wemengrid.gridx = 3 ;
 		wemengrid.gridy = 0 ;
 		wemengrid.gridheight = 1 ;
 		wemengrid.gridwidth = 1 ;
@@ -61,10 +57,10 @@ public class Calculate extends JPanel{
 		add(wemen,wemengrid);
 		
 		GridBagConstraints wemenbuttongrid = new GridBagConstraints();
-		wemenbuttongrid.gridx = 5 ;
+		wemenbuttongrid.gridx = 4 ;
 		wemenbuttongrid.gridy = 0 ;
 		wemenbuttongrid.gridheight = 1 ;
-		wemenbuttongrid.gridwidth = 2 ;
+		wemenbuttongrid.gridwidth = 1 ;
 		wemenbuttongrid.fill = GridBagConstraints.NONE;
 		wemenbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(wemenbutton,wemenbuttongrid);
@@ -73,7 +69,7 @@ public class Calculate extends JPanel{
 		yearsgrid.gridx = 0 ;
 		yearsgrid.gridy = 1 ;
 		yearsgrid.gridheight = 1 ;
-		yearsgrid.gridwidth = 3 ;
+		yearsgrid.gridwidth = 1 ;
 		yearsgrid.fill = GridBagConstraints.NONE;
 		yearsgrid.anchor = GridBagConstraints.CENTER;
 		add(years,yearsgrid);
