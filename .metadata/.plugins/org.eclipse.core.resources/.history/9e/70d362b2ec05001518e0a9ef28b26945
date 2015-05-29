@@ -57,7 +57,7 @@ public class Calculate extends JPanel{
 		add(wemen,wemengrid);
 		
 		GridBagConstraints wemenbuttongrid = new GridBagConstraints();
-		wemenbuttongrid.gridx = 5 ;
+		wemenbuttongrid.gridx = 0 ;
 		wemenbuttongrid.gridy = 0 ;
 		wemenbuttongrid.gridheight = 1 ;
 		wemenbuttongrid.gridwidth = 1 ;
