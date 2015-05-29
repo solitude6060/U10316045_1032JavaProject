@@ -24,16 +24,14 @@ public class Calculate extends JPanel{
 		JTextField TextYears = new JTextField(15);
 		JTextField TextWeight = new JTextField(15);
 		JTextField TextHeight = new JTextField(15);
-		JTextField TextgoodWeight = new JTextField(15);
-		
 		
 	}
 	
-	public double BMI(double weight,double height,double BMI){//calculate BMI
+	public double BMI(double weight,double height,double BMI){
 		return BMI = weight/Math.pow((height/100), 2);
 	}
 	
-	public void SuitWeight(double BMI){// calculate appropriate weight
+	public void SuitWeight(double BMI){
 		double goodweight1 = 18.5*Math.pow((height/100), 2);
 		double goodweight2 = 24*Math.pow((height/100), 2);
 		System.out.printf("%d ~ %d",goodweight1,goodweight2);
