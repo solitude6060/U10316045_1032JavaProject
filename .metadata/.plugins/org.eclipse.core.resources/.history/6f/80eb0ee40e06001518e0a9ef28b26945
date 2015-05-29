@@ -73,7 +73,7 @@ public class Calculate extends JPanel{
 		
 		
 		GridBagConstraints gendergrid = new GridBagConstraints();
-		gendergrid.gridx =  7 ;
+		gendergrid.gridx =  10 ;
 		gendergrid.gridy = 0 ;
 		gendergrid.gridheight = 1 ;
 		gendergrid.gridwidth = 3 ;
@@ -106,7 +106,7 @@ public class Calculate extends JPanel{
 		add(years,yearsgrid);
 		
 		GridBagConstraints yearsTextgrid = new GridBagConstraints();
-		yearsTextgrid.gridx = 7 ;
+		yearsTextgrid.gridx = 4 ;
 		yearsTextgrid.gridy = 1 ;
 		yearsTextgrid.gridheight = 1 ;
 		yearsTextgrid.gridwidth = 3 ;

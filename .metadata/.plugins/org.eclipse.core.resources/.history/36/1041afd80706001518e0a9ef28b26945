@@ -5,10 +5,9 @@ import javax.swing.*;
 public class Calculate extends JPanel{
 		double years,weight,height;
 		double BMI;//18.5~24
-		int genderNum = 0;
 	
 	public Calculate(){
-		final JLabel gender = new JLabel("我是誰？");
+		JLabel gender = new JLabel("我是誰？");
 		JLabel men = new JLabel("男 ");
 		JLabel wemen = new JLabel("女 ");
 		JLabel years = new JLabel("年齡 ： ");
@@ -36,6 +35,8 @@ public class Calculate extends JPanel{
 		mengrid.gridy = 0 ;
 		mengrid.gridheight = 1 ;
 		mengrid.gridwidth = 1 ;
+		mengrid.weightx = 0;
+		mengrid.weighty = 0;
 		mengrid.fill = GridBagConstraints.NONE;
 		mengrid.anchor = GridBagConstraints.CENTER;
 		add(men,mengrid);
@@ -45,6 +46,8 @@ public class Calculate extends JPanel{
 		menbuttongrid.gridy = 0 ;
 		menbuttongrid.gridheight = 1 ;
 		menbuttongrid.gridwidth = 2 ;
+		menbuttongrid.weightx = 0;
+		menbuttongrid.weighty = 0;
 		menbuttongrid.fill = GridBagConstraints.NONE;
 		menbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(menbutton,menbuttongrid);
@@ -67,35 +70,6 @@ public class Calculate extends JPanel{
 		wemenbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(wemenbutton,wemenbuttongrid);
 		
-		ButtonGroup Group = new ButtonGroup();
-		Group.add(menbutton);
-		Group.add(wemenbutton);
-		
-		
-		GridBagConstraints gendergrid = new GridBagConstraints();
-		gendergrid.gridx =  7 ;
-		gendergrid.gridy = 0 ;
-		gendergrid.gridheight = 1 ;
-		gendergrid.gridwidth = 3 ;
-		gendergrid.anchor = GridBagConstraints.CENTER;
-		add(gender,gendergrid);
-		
-		menbutton.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				genderNum = 1;//set gender =  men
-				gender.setText("我是帥哥");
-			}
-		});
-		
-		wemenbutton.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				genderNum = 2;//set gender = wemen
-				gender.setText("我是正咩");
-			}
-		});
-		
 		GridBagConstraints yearsgrid = new GridBagConstraints();
 		yearsgrid.gridx = 0 ;
 		yearsgrid.gridy = 1 ;
@@ -104,16 +78,6 @@ public class Calculate extends JPanel{
 		yearsgrid.fill = GridBagConstraints.NONE;
 		yearsgrid.anchor = GridBagConstraints.CENTER;
 		add(years,yearsgrid);
-		
-		GridBagConstraints yearsTextgrid = new GridBagConstraints();
-		yearsTextgrid.gridx = 7 ;
-		yearsTextgrid.gridy = 1 ;
-		yearsTextgrid.gridheight = 1 ;
-		yearsTextgrid.gridwidth = 3 ;
-		yearsTextgrid.fill = GridBagConstraints.NONE;
-		yearsTextgrid.anchor = GridBagConstraints.CENTER;
-		add(TextYears,yearsTextgrid);
-		
 		
 		
 	}
