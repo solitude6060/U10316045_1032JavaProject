@@ -29,7 +29,6 @@ public class Calculate extends JPanel{
 		JLabel bmr = new JLabel("基礎代謝率 : ");
 		JLabel cal = new JLabel("大卡");
 		final JLabel fit = new JLabel("穠纖合度");
-		JLabel intensity = new JLabel("運動強度 : ");
 		
 		JRadioButton menbutton = new JRadioButton();
 		JRadioButton womenbutton = new JRadioButton();
@@ -307,7 +306,7 @@ public class Calculate extends JPanel{
 		calgrid.anchor = GridBagConstraints.CENTER;
 		add(cal,calgrid);
 		
-		//set BMi, BMR, suitable weight ActionListener
+		//set BMi ActionListener
 		set.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -335,15 +334,7 @@ public class Calculate extends JPanel{
 			}
 		});
 		
-		//intensity
-		GridBagConstraints intensitygrid = new GridBagConstraints();
-		intensitygrid.gridx = 0 ;
-		intensitygrid.gridy = 7;
-		intensitygrid.gridheight = 1 ;
-		intensitygrid.gridwidth = 3 ;
-		intensitygrid.fill = GridBagConstraints.NONE;
-		intensitygrid.anchor = GridBagConstraints.CENTER;
-		add(intensity,intensitygrid);
+		
 		
 	}
 	

@@ -12,8 +12,6 @@ public class Calculate extends JPanel{
 		double heightNum;
 	
 	public Calculate(){
-		String[] situation = {"躺著不動一整天","辦公室坐整天","輕度活動","中度活動","重度活動"};
-		
 		final JLabel gender = new JLabel("我是誰？");
 		JLabel men = new JLabel("男 ");
 		JLabel women = new JLabel("女 ");
@@ -29,12 +27,9 @@ public class Calculate extends JPanel{
 		JLabel bmr = new JLabel("基礎代謝率 : ");
 		JLabel cal = new JLabel("大卡");
 		final JLabel fit = new JLabel("穠纖合度");
-		JLabel intensity = new JLabel("運動強度 : ");
 		
 		JRadioButton menbutton = new JRadioButton();
 		JRadioButton womenbutton = new JRadioButton();
-		
-		JComboBox sportSituation = new JComboBox(situation);
 		
 		final JTextField TextYears = new JTextField(15);
 		final JTextField TextWeight = new JTextField(15);
@@ -307,7 +302,7 @@ public class Calculate extends JPanel{
 		calgrid.anchor = GridBagConstraints.CENTER;
 		add(cal,calgrid);
 		
-		//set BMi, BMR, suitable weight ActionListener
+		//set BMi ActionListener
 		set.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -335,15 +330,7 @@ public class Calculate extends JPanel{
 			}
 		});
 		
-		//intensity
-		GridBagConstraints intensitygrid = new GridBagConstraints();
-		intensitygrid.gridx = 0 ;
-		intensitygrid.gridy = 7;
-		intensitygrid.gridheight = 1 ;
-		intensitygrid.gridwidth = 3 ;
-		intensitygrid.fill = GridBagConstraints.NONE;
-		intensitygrid.anchor = GridBagConstraints.CENTER;
-		add(intensity,intensitygrid);
+		
 		
 	}
 	
@@ -360,39 +347,56 @@ public class Calculate extends JPanel{
 		if(year <= 18){
 			switch(year){
 				case 2:
-					suitbmi = 15.2;break;
+					suitbmi = 15.2;
+					break;
 				case 3:
-					suitbmi = 14.8;break;
+					suitbmi = 14.8;
+					break;
 				case 4:
-					suitbmi = 14.4;break;
+					suitbmi = 14.4;
+					break;
 				case 5:
-					suitbmi = 14;break;
+					suitbmi = 14;
+					break;
 				case 6:
-					suitbmi = 13.9;break;
+					suitbmi = 13.9;
+					break;
 				case 7:
-					suitbmi = 14.7;break;
+					suitbmi = 14.7;
+					break;
 				case 8:
-					suitbmi = 15;break;
+					suitbmi = 15;
+					break;
 				case 9:
-					suitbmi = 15.2;break;
+					suitbmi = 15.2;
+					break;
 				case 10:
-					suitbmi = 15.4;break;
+					suitbmi = 15.4;
+					break;
 				case 11:
-					suitbmi = 15.8;break;
+					suitbmi = 15.8;
+					break;
 				case 12:
-					suitbmi = 16.4;break;
+					suitbmi = 16.4;
+					break;
 				case 13:
-					suitbmi = 17.0;break;
+					suitbmi = 17.0;
+					break;
 				case 14:
-					suitbmi = 17.6;break;
+					suitbmi = 17.6;
+					break;
 				case 15:
-					suitbmi = 18.2;break;
+					suitbmi = 18.2;
+					break;
 				case 16:
-					suitbmi = 18.6;break;
+					suitbmi = 18.6;
+					break;
 				case 17:
-					suitbmi = 19;break;
+					suitbmi = 19;
+					break;
 				case 18:
-					suitbmi = 19.2;break;
+					suitbmi = 19.2;
+					break;
 			}
 			goodweight1 = suitbmi*Math.pow((heightOfMeter), 2);
 		}

@@ -12,8 +12,6 @@ public class Calculate extends JPanel{
 		double heightNum;
 	
 	public Calculate(){
-		String[] situation = {"躺著不動一整天","辦公室坐整天","輕度活動","中度活動","重度活動"};
-		
 		final JLabel gender = new JLabel("我是誰？");
 		JLabel men = new JLabel("男 ");
 		JLabel women = new JLabel("女 ");
@@ -29,12 +27,11 @@ public class Calculate extends JPanel{
 		JLabel bmr = new JLabel("基礎代謝率 : ");
 		JLabel cal = new JLabel("大卡");
 		final JLabel fit = new JLabel("穠纖合度");
-		JLabel intensity = new JLabel("運動強度 : ");
 		
 		JRadioButton menbutton = new JRadioButton();
 		JRadioButton womenbutton = new JRadioButton();
 		
-		JComboBox sportSituation = new JComboBox(situation);
+		JComboBox sportsituation = new JComboBox();
 		
 		final JTextField TextYears = new JTextField(15);
 		final JTextField TextWeight = new JTextField(15);
@@ -307,7 +304,7 @@ public class Calculate extends JPanel{
 		calgrid.anchor = GridBagConstraints.CENTER;
 		add(cal,calgrid);
 		
-		//set BMi, BMR, suitable weight ActionListener
+		//set BMi ActionListener
 		set.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -335,15 +332,7 @@ public class Calculate extends JPanel{
 			}
 		});
 		
-		//intensity
-		GridBagConstraints intensitygrid = new GridBagConstraints();
-		intensitygrid.gridx = 0 ;
-		intensitygrid.gridy = 7;
-		intensitygrid.gridheight = 1 ;
-		intensitygrid.gridwidth = 3 ;
-		intensitygrid.fill = GridBagConstraints.NONE;
-		intensitygrid.anchor = GridBagConstraints.CENTER;
-		add(intensity,intensitygrid);
+		
 		
 	}
 	
