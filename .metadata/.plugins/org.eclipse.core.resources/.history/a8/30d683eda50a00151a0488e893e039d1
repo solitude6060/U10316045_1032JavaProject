@@ -324,9 +324,6 @@ public class Calculate extends JPanel{
 				else if(weightNum > UpperSuitWeight(YearOld,heightNum) && genderNum == 2){
 					fit.setText("你是小腹婆~~~"); 
 				}
-				else{
-					fit.setText("馬甲線/六塊肌");
-				}
 			}
 		});
 		

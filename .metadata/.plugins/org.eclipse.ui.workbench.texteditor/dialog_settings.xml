@@ -3,36 +3,36 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="265" key="DIALOG_WIDTH"/>
 		<item value="134" key="DIALOG_Y_ORIGIN"/>
-		<item value="508" key="DIALOG_X_ORIGIN"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
+		<item value="508" key="DIALOG_X_ORIGIN"/>
 		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="BMi" key="selection"/>
+		<item value="weight3" key="selection"/>
 		<list key="findhistory">
+			<item value="weight3"/>
+			<item value="goodweight"/>
+			<item value="goodWeightgrid"/>
 			<item value="BMI"/>
 			<item value="TextBMI"/>
 			<item value="height2"/>
 			<item value="goodWeightText"/>
 			<item value="TextgoodWeightText"/>
-			<item value="goodweight"/>
-			<item value="height"/>
-			<item value="weight"/>
 		</list>
 		<list key="replacehistory">
+			<item value="fit"/>
+			<item value="cal"/>
+			<item value="bmr"/>
+			<item value="BMR"/>
 			<item value="goodweight"/>
 			<item value="setBMI"/>
 			<item value="BMI"/>
 			<item value="bmi"/>
-			<item value="TextgoodWeight"/>
-			<item value="height"/>
-			<item value="weight"/>
-			<item value="years2grid"/>
 		</list>
 	</section>
 </section>

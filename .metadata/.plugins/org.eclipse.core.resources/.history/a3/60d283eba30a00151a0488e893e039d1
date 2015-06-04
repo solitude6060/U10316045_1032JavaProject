@@ -26,7 +26,7 @@ public class Calculate extends JPanel{
 		JLabel weight3 = new JLabel("公斤");
 		JLabel bmr = new JLabel("基礎代謝率 : ");
 		JLabel cal = new JLabel("大卡");
-		final JLabel fit = new JLabel("穠纖合度");
+		JLabel fit = new JLabel("穠纖合度");
 		
 		JRadioButton menbutton = new JRadioButton();
 		JRadioButton womenbutton = new JRadioButton();
@@ -236,9 +236,9 @@ public class Calculate extends JPanel{
 		
 		GridBagConstraints fitgrid = new GridBagConstraints();
 		fitgrid.gridx =  10 ;
-		fitgrid.gridy = 4 ;
+		fitgrid.gridy = 5 ;
 		fitgrid.gridheight = 1 ;
-		fitgrid.gridwidth = 4 ;
+		fitgrid.gridwidth = 1 ;
 		fitgrid.anchor = GridBagConstraints.CENTER;
 		add(fit,fitgrid);
 		
@@ -314,19 +314,6 @@ public class Calculate extends JPanel{
 				TextBMI.setText(String.valueOf(bmiNUM));
 				TextgoodWeight.setText(String.valueOf(LowerSuitWeight(YearOld,heightNum))+" ~ "+String.valueOf(UpperSuitWeight(YearOld,heightNum)));
 				TextBMR.setText(String.valueOf(BMR(weightNum, heightNum, YearOld, genderNum)));
-					
-				if(weightNum < LowerSuitWeight(YearOld,heightNum)){
-					fit.setText("拒當紙片人");
-				}
-				else if(weightNum > UpperSuitWeight(YearOld,heightNum) && genderNum == 1){
-					fit.setText("肥宅是你！"); 
-				}
-				else if(weightNum > UpperSuitWeight(YearOld,heightNum) && genderNum == 2){
-					fit.setText("你是小腹婆~~~"); 
-				}
-				else{
-					fit.setText("馬甲線/六塊肌");
-				}
 			}
 		});
 		
