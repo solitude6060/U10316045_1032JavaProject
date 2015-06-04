@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class Calculate extends JPanel{
 		double years,weight,height;
+		//double BMI;//18.5~24
 		int genderNum = 0;
 		int YearOld ;
 		double weightNum;
@@ -304,7 +305,7 @@ public class Calculate extends JPanel{
 				
 				TextBMI.setText(String.valueOf(bmiNUM));
 				TextgoodWeight.setText(String.valueOf(LowerSuitWeight(YearOld,heightNum))+" ~ "+String.valueOf(UpperSuitWeight(YearOld,heightNum)));
-				TextBMR.setText(String.valueOf(BMR(weightNum, heightNum, YearOld, genderNum)));
+				TextBMR.setText(String.valueOf(BMR(weightNum,heightNum,YearOld,genderNum));
 			}
 		});
 		
@@ -452,7 +453,7 @@ public class Calculate extends JPanel{
 		return (int)(goodweight2);
 	}
 	
-	public int BMR(double weight, double height, int year, int gender){
+	public int BMR(double weight, double height, int year,int gender){
 		int BMR = (int) ((13.7*weight)+(5.0*height)-(6.8*year)+66) ;
 		return BMR;
 	}

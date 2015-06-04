@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class Calculate extends JPanel{
 		double years,weight,height;
+		//double BMI;//18.5~24
 		int genderNum = 0;
 		int YearOld ;
 		double weightNum;
@@ -25,7 +26,6 @@ public class Calculate extends JPanel{
 		JLabel goodweight = new JLabel("標準體重 : ");
 		JLabel weight3 = new JLabel("公斤");
 		JLabel bmr = new JLabel("基礎代謝率 : ");
-		JLabel cal = new JLabel("大卡");
 		
 		JRadioButton menbutton = new JRadioButton();
 		JRadioButton womenbutton = new JRadioButton();
@@ -235,11 +235,11 @@ public class Calculate extends JPanel{
 		
 		GridBagConstraints setBMIgrid = new GridBagConstraints();
 		setBMIgrid.gridx =  12 ;
-		setBMIgrid.gridy = 6;
+		setBMIgrid.gridy = 5 ;
 		setBMIgrid.gridheight = 1 ;
 		setBMIgrid.gridwidth = 1 ;
 		setBMIgrid.anchor = GridBagConstraints.CENTER;
-		add(set,setBMIgrid);
+		add(setBMI,setBMIgrid);
 		
 		GridBagConstraints goodweightgrid = new GridBagConstraints();
 		goodweightgrid.gridx = 0 ;
@@ -267,31 +267,6 @@ public class Calculate extends JPanel{
 		TextgoodWeightgrid.anchor = GridBagConstraints.CENTER;
 		add(TextgoodWeight,TextgoodWeightgrid);
 		
-		GridBagConstraints bmrgrid = new GridBagConstraints();
-		bmrgrid.gridx = 0 ;
-		bmrgrid.gridy = 6;
-		bmrgrid.gridheight = 1 ;
-		bmrgrid.gridwidth = 3 ;
-		bmrgrid.fill = GridBagConstraints.NONE;
-		bmrgrid.anchor = GridBagConstraints.CENTER;
-		add(bmr,bmrgrid);
-		
-		GridBagConstraints TextBMRgrid = new GridBagConstraints();
-		TextBMRgrid.gridx = 7 ;
-		TextBMRgrid.gridy = 6;
-		TextBMRgrid.gridheight = 1 ;
-		TextBMRgrid.gridwidth = 3 ;
-		TextBMRgrid.fill = GridBagConstraints.NONE;
-		TextBMRgrid.anchor = GridBagConstraints.CENTER;
-		add(TextBMR,TextBMRgrid);
-		
-		GridBagConstraints calgrid = new GridBagConstraints();
-		calgrid.gridx =  10 ;
-		calgrid.gridy = 6 ;
-		calgrid.gridheight = 1 ;
-		calgrid.gridwidth = 1 ;
-		calgrid.anchor = GridBagConstraints.CENTER;
-		add(cal,calgrid);
 		
 		//set BMi ActionListener
 		set.addActionListener(new ActionListener(){
@@ -304,7 +279,6 @@ public class Calculate extends JPanel{
 				
 				TextBMI.setText(String.valueOf(bmiNUM));
 				TextgoodWeight.setText(String.valueOf(LowerSuitWeight(YearOld,heightNum))+" ~ "+String.valueOf(UpperSuitWeight(YearOld,heightNum)));
-				TextBMR.setText(String.valueOf(BMR(weightNum, heightNum, YearOld, genderNum)));
 			}
 		});
 		
@@ -452,10 +426,9 @@ public class Calculate extends JPanel{
 		return (int)(goodweight2);
 	}
 	
-	public int BMR(double weight, double height, int year, int gender){
+	public int BMR(double weight, double height, int year,int gender){
 		int BMR = (int) ((13.7*weight)+(5.0*height)-(6.8*year)+66) ;
 		return BMR;
 	}
-	
 	
 }
