@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.PrintStream;
+
 import javax.swing.*;
 
 public class Calculate extends JPanel{
@@ -21,7 +23,7 @@ public class Calculate extends JPanel{
 		JLabel weight2 = new JLabel("公斤");
 		JLabel height2 = new JLabel("公分");
 		JLabel bmi = new JLabel("ＢＭＩ : ");
-		JLabel goodweight = new JLabel("標準體重 ： ");
+		JLabel goodweight = new JLabel("標準體重 : ");
 		JLabel weight3 = new JLabel("公斤");
 		
 		JRadioButton menbutton = new JRadioButton();
@@ -231,34 +233,196 @@ public class Calculate extends JPanel{
 		
 		GridBagConstraints setBMIgrid = new GridBagConstraints();
 		setBMIgrid.gridx =  12 ;
-		setBMIgrid.gridy = 6 ;
+		setBMIgrid.gridy = 5 ;
 		setBMIgrid.gridheight = 1 ;
 		setBMIgrid.gridwidth = 1 ;
 		setBMIgrid.anchor = GridBagConstraints.CENTER;
 		add(setBMI,setBMIgrid);
 		
-		//set BMi
+		GridBagConstraints goodweightgrid = new GridBagConstraints();
+		goodweightgrid.gridx = 0 ;
+		goodweightgrid.gridy = 5;
+		goodweightgrid.gridheight = 1 ;
+		goodweightgrid.gridwidth = 3 ;
+		goodweightgrid.fill = GridBagConstraints.NONE;
+		goodweightgrid.anchor = GridBagConstraints.CENTER;
+		add(goodweight,goodweightgrid);
+		
+		GridBagConstraints weight3grid = new GridBagConstraints();
+		weight3grid.gridx =  10 ;
+		weight3grid.gridy = 5 ;
+		weight3grid.gridheight = 1 ;
+		weight3grid.gridwidth = 1 ;
+		weight3grid.anchor = GridBagConstraints.CENTER;
+		add(weight3,weight3grid);
+		
+		GridBagConstraints TextgoodWeightgrid = new GridBagConstraints();
+		TextgoodWeightgrid.gridx = 7 ;
+		TextgoodWeightgrid.gridy = 5;
+		TextgoodWeightgrid.gridheight = 1 ;
+		TextgoodWeightgrid.gridwidth = 3 ;
+		TextgoodWeightgrid.fill = GridBagConstraints.NONE;
+		TextgoodWeightgrid.anchor = GridBagConstraints.CENTER;
+		add(TextgoodWeight,TextgoodWeightgrid);
+		
+		
+		//set BMi ActionListener
 		setBMI.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				weightNum = Double.parseDouble(TextWeight.getText());
 				heightNum = Double.parseDouble(TextHeight.getText());
-				TextBMI.setText(String.valueOf(BMI(weightNum,heightNum)));
+				YearOld = (int) Double.parseDouble(TextYears.getText());
+				double bmiNUM = BMI(weightNum,heightNum);
+				
+				TextBMI.setText(String.valueOf(bmiNUM));
+				TextgoodWeight.setText(String.valueOf(LowerSuitWeight(YearOld,heightNum))+" ~ "+String.valueOf(UpperSuitWeight(YearOld,heightNum)));
 			}
 		});
 		
+		
+		
 	}
 	
-	public double BMI(double weight,double height){//calculate BMI
+	public int BMI(double weight, double height){//calculate BMI
 		double heightOfMeter = height/100;
 		double BMI = weight/(heightOfMeter*heightOfMeter);
-		return BMI;
+		return (int)(BMI);
 	}
 	
-	public void SuitWeight(double BMI){// calculate appropriate weight
-		double goodweight1 = 18.5*Math.pow((height/100), 2);
-		double goodweight2 = 24*Math.pow((height/100), 2);
-		System.out.printf("%d ~ %d",goodweight1,goodweight2);
+	public int LowerSuitWeight(int year, double height){// calculate appropriate weight
+		double suitbmi = 0;
+		double heightOfMeter = height/100;
+		double goodweight1;
+		if(year <= 18){
+			switch(year){
+				case 2:
+					suitbmi = 15.2;
+					break;
+				case 3:
+					suitbmi = 14.8;
+					break;
+				case 4:
+					suitbmi = 14.4;
+					break;
+				case 5:
+					suitbmi = 14;
+					break;
+				case 6:
+					suitbmi = 13.9;
+					break;
+				case 7:
+					suitbmi = 14.7;
+					break;
+				case 8:
+					suitbmi = 15;
+					break;
+				case 9:
+					suitbmi = 15.2;
+					break;
+				case 10:
+					suitbmi = 15.4;
+					break;
+				case 11:
+					suitbmi = 15.8;
+					break;
+				case 12:
+					suitbmi = 16.4;
+					break;
+				case 13:
+					suitbmi = 17.0;
+					break;
+				case 14:
+					suitbmi = 17.6;
+					break;
+				case 15:
+					suitbmi = 18.2;
+					break;
+				case 16:
+					suitbmi = 18.6;
+					break;
+				case 17:
+					suitbmi = 19;
+					break;
+				case 18:
+					suitbmi = 19.2;
+					break;
+			}
+			goodweight1 = suitbmi*Math.pow((heightOfMeter), 2);
+		}
+		else{
+			goodweight1 = 18.5*Math.pow((heightOfMeter), 2);
+		}
+		return (int)(goodweight1);
+		
 	}
+	
+	public int UpperSuitWeight(int year, double height){
+		double suitbmi = 0;
+		double heightOfMeter = height/100;
+		double goodweight2 = 0;
+		if(year <= 18){
+			switch(year){
+				case 2:
+					suitbmi = 17.7;
+					break;
+				case 3:
+					suitbmi = 17.7;
+					break;
+				case 4:
+					suitbmi = 17.7;
+					break;
+				case 5:
+					suitbmi = 17.7;
+					break;
+				case 6:
+					suitbmi = 17.9;
+					break;
+				case 7:
+					suitbmi = 18.6;
+					break;
+				case 8:
+					suitbmi = 19.3;
+					break;
+				case 9:
+					suitbmi = 19.7;
+					break;
+				case 10:
+					suitbmi = 20.3;
+					break;
+				case 11:
+					suitbmi = 21;
+					break;
+				case 12:
+					suitbmi = 21.5;
+					break;
+				case 13:
+					suitbmi = 22.2;
+					break;
+				case 14:
+					suitbmi = 22.7;
+					break;
+				case 15:
+					suitbmi = 23.1;
+					break;
+				case 16:
+					suitbmi = 23.4;
+					break;
+				case 17:
+					suitbmi = 23.6;
+					break;
+				case 18:
+					suitbmi = 23.7;
+					break;
+			}
+			goodweight2 = suitbmi*Math.pow((heightOfMeter), 2);
+		}
+		else{
+			goodweight2 = 24*Math.pow((heightOfMeter), 2);
+		}
+		
+		return (int)(goodweight2);
+	}
+	
 	
 }
