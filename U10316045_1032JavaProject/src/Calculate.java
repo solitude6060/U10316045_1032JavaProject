@@ -17,19 +17,8 @@ public class Calculate extends JPanel{
 		final JLabel gender = new JLabel("我是誰？");
 		JLabel men = new JLabel("男 ");
 		JLabel women = new JLabel("女 ");
-		JLabel years = new JLabel("年齡 ： ");
-		JLabel weight = new JLabel("體重 ： ");
-		JLabel height = new JLabel("身高 ： ");
-		JLabel years2 = new JLabel("歲");
-		JLabel weight2 = new JLabel("公斤");
-		JLabel height2 = new JLabel("公分");
-		JLabel bmi = new JLabel("ＢＭＩ : ");
-		JLabel goodweight = new JLabel("標準體重 : ");
-		JLabel weight3 = new JLabel("公斤");
-		JLabel bmr = new JLabel("基礎代謝率 : ");
 		JLabel cal = new JLabel("大卡");
 		final JLabel fit = new JLabel("穠纖合度");
-		JLabel intensity = new JLabel("運動強度 : ");
 		
 		JRadioButton menbutton = new JRadioButton();
 		JRadioButton womenbutton = new JRadioButton();
@@ -114,14 +103,33 @@ public class Calculate extends JPanel{
 			}
 		});
 		
-		GridBagConstraints yearsgrid = new GridBagConstraints();
-		yearsgrid.gridx = 0 ;
-		yearsgrid.gridy = 1 ;
-		yearsgrid.gridheight = 1 ;
-		yearsgrid.gridwidth = 3 ;
-		yearsgrid.fill = GridBagConstraints.NONE;
-		yearsgrid.anchor = GridBagConstraints.CENTER;
-		add(years,yearsgrid);
+		Object[] obj = {new JLabel("年齡 : "),new JLabel("體重 : "),new JLabel("身高 : "),
+				new JLabel("BMI : "),new JLabel("標準體重 : "),new JLabel("基礎代謝率 : "),new JLabel("運動強度 : ")};
+		
+		for(int i = 1; i <= 7; i++){
+			GridBagConstraints grid = new GridBagConstraints();
+			grid.gridx = 0;
+			grid.gridy = i;
+			grid.gridheight = 1;
+			grid.gridwidth = 3;
+			grid.fill = GridBagConstraints.NONE;
+			grid.anchor = GridBagConstraints.CENTER;
+			add((Component) obj[i-1] ,grid);
+		}
+		
+		int[] gy = {1,2,3,5};
+		Object[] obj2 = {new JLabel("歲"),new JLabel("公斤"),new JLabel("公分"),new JLabel("公斤")};
+		
+		for(int i = 1; i <= 4; i++){
+			GridBagConstraints grid2 = new GridBagConstraints();
+			grid2.gridx = 10;
+			grid2.gridy = gy[i-1];
+			grid2.gridheight = 1;
+			grid2.gridwidth = 3;
+			grid2.fill = GridBagConstraints.NONE;
+			grid2.anchor = GridBagConstraints.CENTER;
+			add((Component) obj2[i-1] ,grid2);
+		}
 		
 		GridBagConstraints yearsTextgrid = new GridBagConstraints();
 		yearsTextgrid.gridx = 7 ;
@@ -131,14 +139,6 @@ public class Calculate extends JPanel{
 		yearsTextgrid.fill = GridBagConstraints.NONE;
 		yearsTextgrid.anchor = GridBagConstraints.CENTER;
 		add(TextYears,yearsTextgrid);
-		
-		GridBagConstraints years2grid = new GridBagConstraints();
-		years2grid.gridx =  10 ;
-		years2grid.gridy = 1 ;
-		years2grid.gridheight = 1 ;
-		years2grid.gridwidth = 1 ;
-		years2grid.anchor = GridBagConstraints.CENTER;
-		add(years2,years2grid);
 		
 		//Years TextField ActionListener
 		TextYears.addActionListener(new ActionListener(){
@@ -168,14 +168,6 @@ public class Calculate extends JPanel{
 			}
 		});
 		
-		GridBagConstraints weightgrid = new GridBagConstraints();
-		weightgrid.gridx = 0 ;
-		weightgrid.gridy = 2 ;
-		weightgrid.gridheight = 1 ;
-		weightgrid.gridwidth = 3 ;
-		weightgrid.fill = GridBagConstraints.NONE;
-		weightgrid.anchor = GridBagConstraints.CENTER;
-		add(weight,weightgrid);
 		
 		GridBagConstraints weightTextgrid = new GridBagConstraints();
 		weightTextgrid.gridx = 7 ;
@@ -186,23 +178,6 @@ public class Calculate extends JPanel{
 		weightTextgrid.anchor = GridBagConstraints.CENTER;
 		add(TextWeight,weightTextgrid);
 		
-		GridBagConstraints weight2grid = new GridBagConstraints();
-		weight2grid.gridx =  10 ;
-		weight2grid.gridy = 2 ;
-		weight2grid.gridheight = 1 ;
-		weight2grid.gridwidth = 1 ;
-		weight2grid.anchor = GridBagConstraints.CENTER;
-		add(weight2,weight2grid);
-		
-		GridBagConstraints heightgrid = new GridBagConstraints();
-		heightgrid.gridx = 0 ;
-		heightgrid.gridy = 3 ;
-		heightgrid.gridheight = 1 ;
-		heightgrid.gridwidth = 3 ;
-		heightgrid.fill = GridBagConstraints.NONE;
-		heightgrid.anchor = GridBagConstraints.CENTER;
-		add(height,heightgrid);
-		
 		GridBagConstraints heightTextgrid = new GridBagConstraints();
 		heightTextgrid.gridx = 7 ;
 		heightTextgrid.gridy = 3 ;
@@ -211,24 +186,6 @@ public class Calculate extends JPanel{
 		heightTextgrid.fill = GridBagConstraints.NONE;
 		heightTextgrid.anchor = GridBagConstraints.CENTER;
 		add(TextHeight,heightTextgrid);
-		
-		GridBagConstraints height2grid = new GridBagConstraints();
-		height2grid.gridx =  10 ;
-		height2grid.gridy = 3 ;
-		height2grid.gridheight = 1 ;
-		height2grid.gridwidth = 1 ;
-		height2grid.anchor = GridBagConstraints.CENTER;
-		add(height2,height2grid);
-		
-		
-		GridBagConstraints bmigrid = new GridBagConstraints();
-		bmigrid.gridx = 0 ;
-		bmigrid.gridy = 4 ;
-		bmigrid.gridheight = 1 ;
-		bmigrid.gridwidth = 3 ;
-		bmigrid.fill = GridBagConstraints.NONE;
-		bmigrid.anchor = GridBagConstraints.CENTER;
-		add(bmi,bmigrid);
 		
 		GridBagConstraints TextBMIgrid = new GridBagConstraints();
 		TextBMIgrid.gridx = 7 ;
@@ -248,29 +205,12 @@ public class Calculate extends JPanel{
 		add(fit,fitgrid);
 		
 		GridBagConstraints setBMIgrid = new GridBagConstraints();
-		setBMIgrid.gridx =  12 ;
+		setBMIgrid.gridx =  13 ;
 		setBMIgrid.gridy = 6;
 		setBMIgrid.gridheight = 1 ;
 		setBMIgrid.gridwidth = 1 ;
 		setBMIgrid.anchor = GridBagConstraints.CENTER;
 		add(set,setBMIgrid);
-		
-		GridBagConstraints goodweightgrid = new GridBagConstraints();
-		goodweightgrid.gridx = 0 ;
-		goodweightgrid.gridy = 5;
-		goodweightgrid.gridheight = 1 ;
-		goodweightgrid.gridwidth = 3 ;
-		goodweightgrid.fill = GridBagConstraints.NONE;
-		goodweightgrid.anchor = GridBagConstraints.CENTER;
-		add(goodweight,goodweightgrid);
-		
-		GridBagConstraints weight3grid = new GridBagConstraints();
-		weight3grid.gridx =  10 ;
-		weight3grid.gridy = 5 ;
-		weight3grid.gridheight = 1 ;
-		weight3grid.gridwidth = 1 ;
-		weight3grid.anchor = GridBagConstraints.CENTER;
-		add(weight3,weight3grid);
 		
 		GridBagConstraints TextgoodWeightgrid = new GridBagConstraints();
 		TextgoodWeightgrid.gridx = 7 ;
@@ -280,15 +220,6 @@ public class Calculate extends JPanel{
 		TextgoodWeightgrid.fill = GridBagConstraints.NONE;
 		TextgoodWeightgrid.anchor = GridBagConstraints.CENTER;
 		add(TextgoodWeight,TextgoodWeightgrid);
-		
-		GridBagConstraints bmrgrid = new GridBagConstraints();
-		bmrgrid.gridx = 0 ;
-		bmrgrid.gridy = 6;
-		bmrgrid.gridheight = 1 ;
-		bmrgrid.gridwidth = 3 ;
-		bmrgrid.fill = GridBagConstraints.NONE;
-		bmrgrid.anchor = GridBagConstraints.CENTER;
-		add(bmr,bmrgrid);
 		
 		GridBagConstraints TextBMRgrid = new GridBagConstraints();
 		TextBMRgrid.gridx = 7 ;
@@ -300,7 +231,7 @@ public class Calculate extends JPanel{
 		add(TextBMR,TextBMRgrid);
 		
 		GridBagConstraints calgrid = new GridBagConstraints();
-		calgrid.gridx =  10 ;
+		calgrid.gridx =  12 ;
 		calgrid.gridy = 6 ;
 		calgrid.gridheight = 1 ;
 		calgrid.gridwidth = 1 ;
@@ -334,16 +265,6 @@ public class Calculate extends JPanel{
 				}
 			}
 		});
-		
-		//intensity
-		GridBagConstraints intensitygrid = new GridBagConstraints();
-		intensitygrid.gridx = 0 ;
-		intensitygrid.gridy = 7;
-		intensitygrid.gridheight = 1 ;
-		intensitygrid.gridwidth = 3 ;
-		intensitygrid.fill = GridBagConstraints.NONE;
-		intensitygrid.anchor = GridBagConstraints.CENTER;
-		add(intensity,intensitygrid);
 		
 	}
 	
