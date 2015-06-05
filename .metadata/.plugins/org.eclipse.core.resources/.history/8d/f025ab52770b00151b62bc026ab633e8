@@ -15,8 +15,8 @@ public class Calculate extends JPanel{
 		String[] situation = {"躺著不動一整天","辦公室坐整天","輕度活動","中度活動","重度活動"};
 		
 		final JLabel gender = new JLabel("我是誰？");
-		//JLabel men = new JLabel("男 ");
-		//JLabel women = new JLabel("女 ");
+		JLabel men = new JLabel("男 ");
+		JLabel women = new JLabel("女 ");
 		JLabel cal = new JLabel("大卡");
 		final JLabel fit = new JLabel("穠纖合度");
 		
@@ -36,20 +36,15 @@ public class Calculate extends JPanel{
 		
 		setLayout(new GridBagLayout());
 		
-	
-		int[] gx = {0,4};//gridx of JLabel men & women
-		Object[] objL = {new JLabel("男 "),new JLabel("女 ")};//JLabel men & women
-		//set JLabel grid
-		for(int k =0; k < 2;k++){
-			GridBagConstraints gendergrid = new GridBagConstraints();
-			gendergrid.gridx = gx[k];
-			gendergrid.gridy = 0 ;
-			gendergrid.gridheight = 1 ;
-			gendergrid.gridwidth = 1 ;
-			gendergrid.fill = GridBagConstraints.NONE;
-			gendergrid.anchor = GridBagConstraints.CENTER;
-			add((Component)objL[k],gendergrid);
-		}
+		
+		GridBagConstraints mengrid = new GridBagConstraints();
+		mengrid.gridx = 0 ;
+		mengrid.gridy = 0 ;
+		mengrid.gridheight = 1 ;
+		mengrid.gridwidth = 1 ;
+		mengrid.fill = GridBagConstraints.NONE;
+		mengrid.anchor = GridBagConstraints.CENTER;
+		add(men,mengrid);
 		
 		GridBagConstraints menbuttongrid = new GridBagConstraints();
 		menbuttongrid.gridx = 1 ;
@@ -59,6 +54,15 @@ public class Calculate extends JPanel{
 		menbuttongrid.fill = GridBagConstraints.NONE;
 		menbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(menbutton,menbuttongrid);
+		
+		GridBagConstraints womengrid = new GridBagConstraints();
+		womengrid.gridx = 4 ;
+		womengrid.gridy = 0 ;
+		womengrid.gridheight = 1 ;
+		womengrid.gridwidth = 1 ;
+		womengrid.fill = GridBagConstraints.NONE;
+		womengrid.anchor = GridBagConstraints.CENTER;
+		add(women,womengrid);
 		
 		GridBagConstraints womenbuttongrid = new GridBagConstraints();
 		womenbuttongrid.gridx = 5 ;

@@ -36,10 +36,8 @@ public class Calculate extends JPanel{
 		
 		setLayout(new GridBagLayout());
 		
-	
-		int[] gx = {0,4};//gridx of JLabel men & women
-		Object[] objL = {new JLabel("男 "),new JLabel("女 ")};//JLabel men & women
-		//set JLabel grid
+		int[] gx = {0,4};
+		Object[] objL = {new JLabel("男 "),new JLabel("女 ")};
 		for(int k =0; k < 2;k++){
 			GridBagConstraints gendergrid = new GridBagConstraints();
 			gendergrid.gridx = gx[k];
@@ -50,7 +48,6 @@ public class Calculate extends JPanel{
 			gendergrid.anchor = GridBagConstraints.CENTER;
 			add((Component)objL[k],gendergrid);
 		}
-		
 		GridBagConstraints menbuttongrid = new GridBagConstraints();
 		menbuttongrid.gridx = 1 ;
 		menbuttongrid.gridy = 0 ;
@@ -59,6 +56,15 @@ public class Calculate extends JPanel{
 		menbuttongrid.fill = GridBagConstraints.NONE;
 		menbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(menbutton,menbuttongrid);
+		
+		GridBagConstraints womengrid = new GridBagConstraints();
+		womengrid.gridx = 4 ;
+		womengrid.gridy = 0 ;
+		womengrid.gridheight = 1 ;
+		womengrid.gridwidth = 1 ;
+		womengrid.fill = GridBagConstraints.NONE;
+		womengrid.anchor = GridBagConstraints.CENTER;
+		add(women,womengrid);
 		
 		GridBagConstraints womenbuttongrid = new GridBagConstraints();
 		womenbuttongrid.gridx = 5 ;

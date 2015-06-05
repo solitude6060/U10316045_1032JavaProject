@@ -50,7 +50,6 @@ public class Calculate extends JPanel{
 			gendergrid.anchor = GridBagConstraints.CENTER;
 			add((Component)objL[k],gendergrid);
 		}
-		
 		GridBagConstraints menbuttongrid = new GridBagConstraints();
 		menbuttongrid.gridx = 1 ;
 		menbuttongrid.gridy = 0 ;

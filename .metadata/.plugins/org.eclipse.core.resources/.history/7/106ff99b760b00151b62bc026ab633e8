@@ -15,8 +15,8 @@ public class Calculate extends JPanel{
 		String[] situation = {"躺著不動一整天","辦公室坐整天","輕度活動","中度活動","重度活動"};
 		
 		final JLabel gender = new JLabel("我是誰？");
-		//JLabel men = new JLabel("男 ");
-		//JLabel women = new JLabel("女 ");
+		JLabel men = new JLabel("男 ");
+		JLabel women = new JLabel("女 ");
 		JLabel cal = new JLabel("大卡");
 		final JLabel fit = new JLabel("穠纖合度");
 		
@@ -36,20 +36,15 @@ public class Calculate extends JPanel{
 		
 		setLayout(new GridBagLayout());
 		
-	
-		int[] gx = {0,4};//gridx of JLabel men & women
-		Object[] objL = {new JLabel("男 "),new JLabel("女 ")};//JLabel men & women
-		//set JLabel grid
-		for(int k =0; k < 2;k++){
-			GridBagConstraints gendergrid = new GridBagConstraints();
-			gendergrid.gridx = gx[k];
-			gendergrid.gridy = 0 ;
-			gendergrid.gridheight = 1 ;
-			gendergrid.gridwidth = 1 ;
-			gendergrid.fill = GridBagConstraints.NONE;
-			gendergrid.anchor = GridBagConstraints.CENTER;
-			add((Component)objL[k],gendergrid);
-		}
+		
+		GridBagConstraints mengrid = new GridBagConstraints();
+		mengrid.gridx = 0 ;
+		mengrid.gridy = 0 ;
+		mengrid.gridheight = 1 ;
+		mengrid.gridwidth = 1 ;
+		mengrid.fill = GridBagConstraints.NONE;
+		mengrid.anchor = GridBagConstraints.CENTER;
+		add(men,mengrid);
 		
 		GridBagConstraints menbuttongrid = new GridBagConstraints();
 		menbuttongrid.gridx = 1 ;
@@ -59,6 +54,15 @@ public class Calculate extends JPanel{
 		menbuttongrid.fill = GridBagConstraints.NONE;
 		menbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(menbutton,menbuttongrid);
+		
+		GridBagConstraints womengrid = new GridBagConstraints();
+		womengrid.gridx = 4 ;
+		womengrid.gridy = 0 ;
+		womengrid.gridheight = 1 ;
+		womengrid.gridwidth = 1 ;
+		womengrid.fill = GridBagConstraints.NONE;
+		womengrid.anchor = GridBagConstraints.CENTER;
+		add(women,womengrid);
 		
 		GridBagConstraints womenbuttongrid = new GridBagConstraints();
 		womenbuttongrid.gridx = 5 ;
@@ -90,7 +94,6 @@ public class Calculate extends JPanel{
 				gender.setText("我是帥哥");
 			}
 		});
-		
 		//women button ActionListener
 		womenbutton.addActionListener(new ActionListener(){
 			@Override
@@ -100,10 +103,9 @@ public class Calculate extends JPanel{
 			}
 		});
 		
-		//array to store JLabel
 		Object[] obj = {new JLabel("年齡 : "),new JLabel("體重 : "),new JLabel("身高 : "),
 				new JLabel("BMI : "),new JLabel("標準體重 : "),new JLabel("基礎代謝率 : "),new JLabel("運動強度 : ")};
-		//set grid of JLabel
+		
 		for(int i = 1; i <= 7; i++){
 			GridBagConstraints grid = new GridBagConstraints();
 			grid.gridx = 0;
@@ -114,10 +116,10 @@ public class Calculate extends JPanel{
 			grid.anchor = GridBagConstraints.CENTER;
 			add((Component) obj[i-1] ,grid);
 		}
-		//gridy
+		
 		int[] gy = {1,2,3,5};
 		Object[] obj2 = {new JLabel("歲"),new JLabel("公斤"),new JLabel("公分"),new JLabel("公斤")};
-		//set grid of Label
+		
 		for(int i = 1; i <= 4; i++){
 			GridBagConstraints grid2 = new GridBagConstraints();
 			grid2.gridx = 10;
