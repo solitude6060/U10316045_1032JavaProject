@@ -8,18 +8,22 @@ public class Calculate extends JPanel{
 		private double years,weight,height;
 		private int genderNum = 0;
 		private int actMode = 0;
-		private int YearOld ;
+		private int YearOld,wishkg ;
+		private int LoseOrAdd = 0;
 		private double weightNum;
 		private double heightNum;
 		
 	
 	public Calculate(){
 		int[] gx = {0,4};//gridx of JLabel men & women
+		int[] gy = {1,2,3,5};//gridy of unit
 		
-		//array to store JLabel
+		//array to store JLabel		
+		Object[] obj2 = {new JLabel("歲"),new JLabel("公斤"),new JLabel("公分"),new JLabel("公斤")};//label of unit
 		Object[] objL = {new JLabel("男 "),new JLabel("女 ")};//JLabel men & women
+		Object[] objL2 = {new JLabel("增重 "),new JLabel("減肥 ")};//JLabel
 		Object[] obj = {new JLabel("年齡 : "),new JLabel("體重 : "),new JLabel("身高 : "),
-				new JLabel("BMI : "),new JLabel("標準體重 : "),new JLabel("基礎代謝率 : "),new JLabel("運動強度 : ")};
+				new JLabel("BMI : "),new JLabel("標準體重 : "),new JLabel("基礎代謝率 : "),new JLabel("運動強度 : "),new JLabel("每日需熱量 : ")};
 		
 		//String array of JComboBox
 		final String[] situation = {"躺著不動一整天","辦公室坐整天","輕度活動","中度活動","重度活動","體力勞動型"};
@@ -27,16 +31,22 @@ public class Calculate extends JPanel{
 		//JLabel
 		final JLabel gender = new JLabel("我是誰？");
 		final JLabel fit = new JLabel("穠纖合度");
+		final JLabel wish = new JLabel("我想要？");
 		JLabel cal = new JLabel("大卡");
 		JLabel cal2 = new JLabel("大卡");
-		JLabel consumption = new JLabel("每日所需熱量 : ");
+		JLabel kg = new JLabel("公斤");
+		JLabel recommend = new JLabel("建議減重天數 : ");
+		JLabel plan = new JLabel("計畫專區");
+		
 		//JButton
 		JButton set = new JButton("SET");
 		
 		//JRadioButton
 		JRadioButton menbutton = new JRadioButton();
 		JRadioButton womenbutton = new JRadioButton();
-
+		JRadioButton loseweightbutton = new JRadioButton();
+		JRadioButton addweightbutton = new JRadioButton();
+		
 		//JTextfield
 		final JTextField TextYears = new JTextField(15);
 		final JTextField TextWeight = new JTextField(15);
@@ -45,19 +55,47 @@ public class Calculate extends JPanel{
 		final JTextField TextgoodWeight = new JTextField(15);
 		final JTextField TextBMR = new JTextField(15);
 		final JTextField Textconsump = new JTextField(15);
+		final JTextField TextwishKg = new JTextField(5);
+		final JTextField Textrecommend = new JTextField(5);
+		
 		
 		//JComboBox of people situation of action
 		JComboBox sportSituation = new JComboBox(situation);
 		JScrollPane sp = new JScrollPane(sportSituation);//put scroll into ComboBox 
 		
 		setLayout(new GridBagLayout());
-	
+		
 		//set JLabel grid
+		/*
+		 *選擇男女的標籤
+		 */
 		for(int k =0; k < 2;k++){
-			GridBagConstraints gendergrid = null;
-			setLGrid((JLabel)objL[k],gendergrid,gx[k],0,1,1);
+			GridBagConstraints LabelOfButtongrid = null;
+			setLGrid((JLabel)objL[k],LabelOfButtongrid,gx[k],0,1,1);
+			
+			setLGrid((JLabel)objL2[k],LabelOfButtongrid,gx[k],11,1,1);
 		}
 		
+		//set grid of JLabel
+		/*
+		 * 1~8行(從零開始)的標籤
+		 * 
+		 */
+		for(int i = 1; i <= 8; i++){
+			GridBagConstraints grid = null;
+			setLGrid((JLabel) obj[i-1] ,grid,0,i,1,4);
+		}
+		//單位		
+		//set grid of Unit Label
+		for(int i = 1; i <= 4; i++){
+			GridBagConstraints grid2 = null;
+			setLGrid((JLabel) obj2[i-1] ,grid2,10,gy[i-1],1,3);
+		}
+				
+		
+		
+		
+		//set grid of button men
 		GridBagConstraints menbuttongrid = new GridBagConstraints();
 		menbuttongrid.gridx = 1 ;
 		menbuttongrid.gridy = 0 ;
@@ -67,6 +105,7 @@ public class Calculate extends JPanel{
 		menbuttongrid.anchor = GridBagConstraints.CENTER;
 		add(menbutton,menbuttongrid);
 		
+		//set grid of button women
 		GridBagConstraints womenbuttongrid = new GridBagConstraints();
 		womenbuttongrid.gridx = 5 ;
 		womenbuttongrid.gridy = 0 ;
@@ -81,57 +120,77 @@ public class Calculate extends JPanel{
 		Group.add(menbutton);
 		Group.add(womenbutton);
 		
+		//set grid 
+		GridBagConstraints addweightgrid = new GridBagConstraints();
+		addweightgrid.gridx = 1 ;
+		addweightgrid.gridy = 11 ;
+		addweightgrid.gridheight = 1 ;
+		addweightgrid.gridwidth = 2 ;
+		addweightgrid.fill = GridBagConstraints.NONE;
+		addweightgrid.anchor = GridBagConstraints.CENTER;
+		add(addweightbutton,addweightgrid);
+		
+		//set grid of button women
+		GridBagConstraints loseweightgrid = new GridBagConstraints();
+		loseweightgrid.gridx = 5 ;
+		loseweightgrid.gridy = 11 ;
+		loseweightgrid.gridheight = 1 ;
+		loseweightgrid.gridwidth = 2 ;
+		loseweightgrid.fill = GridBagConstraints.NONE;
+		loseweightgrid.anchor = GridBagConstraints.CENTER;
+		add(loseweightbutton,loseweightgrid);
+		//radio button group
+		ButtonGroup Group2 = new ButtonGroup();
+		Group2.add(addweightbutton);
+		Group2.add(loseweightbutton);
+		
+		// set button
+		GridBagConstraints setBMIgrid = new GridBagConstraints();
+		setBMIgrid.gridx =  13 ;
+		setBMIgrid.gridy = 6;
+		setBMIgrid.gridheight = 1 ;
+		setBMIgrid.gridwidth = 1 ;
+		setBMIgrid.anchor = GridBagConstraints.CENTER;
+		add(set,setBMIgrid);
+
+		
+		
+		// JLabel
 		GridBagConstraints gendergrid = null;
 		setLGrid(gender,gendergrid,7,0,1,3);
 		
-		//men button ActionListener
-		menbutton.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				genderNum = 1;//set gender =  men
-				gender.setText("我是帥哥");
-			}
-		});
+		GridBagConstraints fitgrid = null;
+		setLGrid(fit,fitgrid,10,4,1,4);
 		
-		//women button ActionListener
-		womenbutton.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				genderNum = 2;//set gender = women
-				gender.setText("我是正咩");
-			}
-		});
+		GridBagConstraints cal2grid = null;
+		setLGrid(cal2,cal2grid,12,8,1,1);
+		//set unit
+		GridBagConstraints calgrid = null ;
+		setLGrid(cal,calgrid,12,6,1,1);
+		
+		GridBagConstraints wishgrid = null ;
+		setLGrid(wish,wishgrid,9,11,1,4);
+		
+		GridBagConstraints KGgrid = null ;
+		setLGrid(kg,KGgrid,8,11,1,1);
+		
+		GridBagConstraints recommendgrid = null;
+		setLGrid(recommend,recommendgrid,0,12,1,4);
+		
+		JLabel nul = new JLabel(" ");
+		GridBagConstraints nulgrid = null;
+		setLGrid(nul,nulgrid,0,9,1,5);
+		
+		GridBagConstraints plangrid = null;
+		setLGrid(plan,plangrid,0,10,1,1);
+		plan.setForeground(Color.red);
+		//plan.setFont(new Font("標楷體", Font.BOLD, 17));
 		
 		
-		//set grid of JLabel
-		for(int i = 1; i <= 7; i++){
-			GridBagConstraints grid = null;
-			setLGrid((JLabel) obj[i-1] ,grid,0,i,1,3);
-		}
 		
-		//gridy
-		int[] gy = {1,2,3,5};
-		
-		Object[] obj2 = {new JLabel("歲"),new JLabel("公斤"),new JLabel("公分"),new JLabel("公斤")};
-		
-		//set grid of Label
-		for(int i = 1; i <= 4; i++){
-			GridBagConstraints grid2 = null;
-			setLGrid((JLabel) obj2[i-1] ,grid2,10,gy[i-1],1,3);
-		}
-		
+		// TextField
 		GridBagConstraints yearsTextgrid = null;
 		setTGrid(TextYears,yearsTextgrid,7,1,1,3);
-		
-		//Years TextField ActionListener
-		TextYears.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				YearOld = (int) Double.parseDouble(TextYears.getText());
-				setGenderText(gender,YearOld,genderNum);
-			}
-		});
-		
 		
 		GridBagConstraints weightTextgrid = null;
 		setTGrid(TextWeight,weightTextgrid,7,2,1,3);
@@ -142,26 +201,89 @@ public class Calculate extends JPanel{
 		GridBagConstraints TextBMIgrid =null;
 		setTGrid(TextBMI,TextBMIgrid,7,4,1,3);
 		
-		GridBagConstraints fitgrid = null;
-		setLGrid(fit,fitgrid,10,4,1,4);
-		
-		GridBagConstraints setBMIgrid = new GridBagConstraints();
-		setBMIgrid.gridx =  13 ;
-		setBMIgrid.gridy = 6;
-		setBMIgrid.gridheight = 1 ;
-		setBMIgrid.gridwidth = 1 ;
-		setBMIgrid.anchor = GridBagConstraints.CENTER;
-		add(set,setBMIgrid);
-		
 		GridBagConstraints TextgoodWeightgrid = null;
 		setTGrid(TextgoodWeight,TextgoodWeightgrid,7,5,1,3);
 		
 		GridBagConstraints TextBMRgrid = null;
 		setTGrid(TextBMR,TextBMRgrid,7,6,1,3);
 		
+		GridBagConstraints Textconsumptiongrid = null;
+		setTGrid(Textconsump,Textconsumptiongrid,7,8,1,3);
 		
-		GridBagConstraints calgrid = null ;
-		setLGrid(cal,calgrid,12,6,1,1);
+		GridBagConstraints TextwishKGgrid = null;
+		setTGrid(TextwishKg,TextwishKGgrid,7,11,1,1);
+		
+		GridBagConstraints Textrecommendgrid = null;
+		setTGrid(Textrecommend,Textrecommendgrid,7,12,1,1);
+		
+		//set grid of sportSituation ComboBox
+		GridBagConstraints comboboxgrid = new GridBagConstraints();
+		comboboxgrid.gridx = 7 ;
+		comboboxgrid.gridy = 7 ;
+		comboboxgrid.gridheight = 1 ;
+		comboboxgrid.gridwidth = 3 ;
+		comboboxgrid.fill = GridBagConstraints.NONE;
+		comboboxgrid.anchor = GridBagConstraints.CENTER;
+		add(sp,comboboxgrid);
+		
+		
+		
+		
+		/*
+		 * ActionListener
+		 */
+		//men button ActionListener
+		menbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				genderNum = 1;//set gender =  men
+				gender.setText("我是帥哥");
+			}
+		});
+				
+		//women button ActionListener
+		womenbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				genderNum = 2;//set gender = women
+				gender.setText("我是正咩");
+			}
+		});
+		
+		addweightbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				LoseOrAdd = 1;//set gender = women
+				wish.setText("我要健康增重");
+			}
+		});
+		
+		loseweightbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				LoseOrAdd = 2;//set gender = women
+				wish.setText("阿肥要減肥！！");
+			}
+		});
+				
+				
+		//Years TextField ActionListener
+		TextYears.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				YearOld = (int) Double.parseDouble(TextYears.getText());
+				setGenderText(gender,YearOld,genderNum);
+				
+			}
+		});
+		
+		TextwishKg.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				wishkg = (int) Double.parseDouble(TextwishKg.getText());
+				Textrecommend.setText(String.valueOf(setDayNum(wishkg)));
+			}
+		});
 		
 		//set BMi, BMR, suitable weight ActionListener
 		set.addActionListener(new ActionListener(){
@@ -181,16 +303,6 @@ public class Calculate extends JPanel{
 			}//end actionPerfromed
 		});
 		
-		//set grid of sportSituation
-		GridBagConstraints comboboxgrid = new GridBagConstraints();
-		comboboxgrid.gridx = 7 ;
-		comboboxgrid.gridy = 7 ;
-		comboboxgrid.gridheight = 1 ;
-		comboboxgrid.gridwidth = 3 ;
-		comboboxgrid.fill = GridBagConstraints.NONE;
-		comboboxgrid.anchor = GridBagConstraints.CENTER;
-		add(sp,comboboxgrid);
-		
 		sportSituation.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -209,14 +321,6 @@ public class Calculate extends JPanel{
 			}//end actionPerfromed
 		});
 		
-		GridBagConstraints consumptiongrid = null;
-		setLGrid(consumption,consumptiongrid,0,8,1,3);
-		
-		GridBagConstraints Textconsumptiongrid = null;
-		setTGrid(Textconsump,Textconsumptiongrid,7,8,1,3);
-		
-		GridBagConstraints cal2grid = null;
-		setLGrid(cal2,cal2grid,12,8,1,1);
 	}
 	
 	/*
@@ -226,6 +330,10 @@ public class Calculate extends JPanel{
 	 * 
 	 * 
 	 */
+	public int setDayNum(int wishkg){
+		int day = (int)(wishkg/2);
+		return day;
+	}
 	
 	//set genderTextField method
 	public void setGenderText(JLabel gender,int YearOld,int genderNum){
