@@ -15,6 +15,9 @@ public class Calculate extends JPanel{
 		
 	
 	public Calculate(){
+
+		
+		
 		int[] gx = {0,4};//gridx of JLabel men & women
 		int[] gy = {1,2,3,5};//gridy of unit
 		
@@ -34,12 +37,16 @@ public class Calculate extends JPanel{
 		final JLabel wish = new JLabel("我想要？");
 		JLabel cal = new JLabel("大卡");
 		JLabel cal2 = new JLabel("大卡");
+		JLabel cal3 = new JLabel("大卡");
 		JLabel kg = new JLabel("公斤");
 		JLabel recommend = new JLabel("建議減重天數 : ");
 		JLabel plan = new JLabel("計畫專區");
+		JLabel days = new JLabel("天");
+		JLabel heightCal = new JLabel("每日最高熱量 : ");
 		
 		//JButton
 		JButton set = new JButton("SET");
+		JButton display = new JButton("Display");
 		
 		//JRadioButton
 		JRadioButton menbutton = new JRadioButton();
@@ -49,15 +56,25 @@ public class Calculate extends JPanel{
 		
 		//JTextfield
 		final JTextField TextYears = new JTextField(15);
+		TextYears.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField TextWeight = new JTextField(15);
+		TextWeight.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField TextHeight = new JTextField(15);
+		TextHeight.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField TextBMI = new JTextField(15);
+		TextBMI.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField TextgoodWeight = new JTextField(15);
+		TextgoodWeight.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField TextBMR = new JTextField(15);
+		TextBMR.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField Textconsump = new JTextField(15);
+		Textconsump.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField TextwishKg = new JTextField(5);
+		TextwishKg.setHorizontalAlignment(JTextField.RIGHT);
 		final JTextField Textrecommend = new JTextField(5);
-		
+		Textrecommend.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextHeightCal = new JTextField(8);
+		TextHeightCal.setHorizontalAlignment(JTextField.RIGHT);
 		
 		//JComboBox of people situation of action
 		JComboBox sportSituation = new JComboBox(situation);
@@ -152,6 +169,14 @@ public class Calculate extends JPanel{
 		setBMIgrid.gridwidth = 1 ;
 		setBMIgrid.anchor = GridBagConstraints.CENTER;
 		add(set,setBMIgrid);
+		
+		GridBagConstraints displaygrid = new GridBagConstraints();
+		displaygrid.gridx =  9 ;
+		displaygrid.gridy = 13;
+		displaygrid.gridheight = 1 ;
+		displaygrid.gridwidth = 4 ;
+		displaygrid.anchor = GridBagConstraints.CENTER;
+		add(display,displaygrid);
 
 		
 		
@@ -174,8 +199,17 @@ public class Calculate extends JPanel{
 		GridBagConstraints KGgrid = null ;
 		setLGrid(kg,KGgrid,8,11,1,1);
 		
+		GridBagConstraints daysgrid = null ;
+		setLGrid(days,daysgrid,8,12,1,1);
+		
+		GridBagConstraints cal3grid = null ;
+		setLGrid(cal3,cal3grid,8,13,1,1);
+		
 		GridBagConstraints recommendgrid = null;
 		setLGrid(recommend,recommendgrid,0,12,1,4);
+		
+		GridBagConstraints heightCalgrid = null;
+		setLGrid(heightCal,heightCalgrid,0,13,1,4);
 		
 		JLabel nul = new JLabel(" ");
 		GridBagConstraints nulgrid = null;
@@ -215,6 +249,10 @@ public class Calculate extends JPanel{
 		
 		GridBagConstraints Textrecommendgrid = null;
 		setTGrid(Textrecommend,Textrecommendgrid,7,12,1,1);
+		
+		GridBagConstraints TextHeightCalgrid = null;
+		setTGrid(TextHeightCal,TextHeightCalgrid,6,13,1,2);
+		
 		
 		//set grid of sportSituation ComboBox
 		GridBagConstraints comboboxgrid = new GridBagConstraints();
@@ -277,11 +315,15 @@ public class Calculate extends JPanel{
 			}
 		});
 		
-		TextwishKg.addActionListener(new ActionListener(){
+		display.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				wishkg = (int) Double.parseDouble(TextwishKg.getText());
-				Textrecommend.setText(String.valueOf(setDayNum(wishkg)));
+				Textrecommend.setText(String.valueOf(setDayNum(wishkg)*7)+" ~ "+wishkg*7);
+				int total = (int) Double.parseDouble(Textconsump.getText()); 
+				int result = total - 1100;
+				int result2 = total -(int) (1100*1.5);
+				TextHeightCal.setText(result+"~"+result2);
 			}
 		});
 		
@@ -331,9 +373,10 @@ public class Calculate extends JPanel{
 	 * 
 	 */
 	public int setDayNum(int wishkg){
-		int day = (int)(wishkg/2);
+		int day = (int)(wishkg/1.5);
 		return day;
 	}
+	
 	
 	//set genderTextField method
 	public void setGenderText(JLabel gender,int YearOld,int genderNum){
@@ -344,13 +387,13 @@ public class Calculate extends JPanel{
 			gender.setText("我是老爺爺");
 		}
 		else if((genderNum == 1) && (YearOld > 12) && (YearOld < 19)){
-			gender.setText("我是熱褲刑警！");
+			gender.setText("我是小鮮肉！");
 		}
 		else if((genderNum == 2) && (YearOld <= 10 )){
 			gender.setText("我是可愛小蘿莉！");
 		}
 		else if((genderNum == 2) && (YearOld > 12) && (YearOld < 19)){
-			gender.setText("我是清純美少女啾咪 >.^");
+			gender.setText("我是清純少女啾咪 >.^");
 		}
 		else if((genderNum == 2) && (YearOld > 65 )){
 			gender.setText("我是老奶奶");

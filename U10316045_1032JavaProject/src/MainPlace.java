@@ -24,3 +24,5 @@ public class MainPlace extends JFrame {
 	
 	
 }
+
+//如果要單獨關視窗 - DISPOSE_ON_CLOSE
