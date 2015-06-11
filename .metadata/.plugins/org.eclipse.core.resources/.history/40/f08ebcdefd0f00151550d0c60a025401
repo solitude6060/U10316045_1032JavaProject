@@ -16,7 +16,7 @@ public class MainPlace extends JFrame {
 	public static void main(String[] args) {
 		JFrame frame = new MainPlace();
 		frame.setTitle("°·±d´î­«¤pÀ°¤â");
-		frame.setSize(500, 500);
+		frame.setSize(600, 400);
 		frame.setLocationRelativeTo(null); // Center the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);

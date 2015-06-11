@@ -213,12 +213,7 @@ public class Calculate extends JPanel{
 		setLGrid(heightCal,heightCalgrid,0,13,1,4);
 		
 		GridBagConstraints Doyouknowgrid = null;
-		setLGrid(Doyouknow,Doyouknowgrid,0,14,1,4);
-		Doyouknow.setForeground(Color.red);
-		
-		GridBagConstraints knowledgegrid = null;
-		setLGrid(knowledge,knowledgegrid,6,14,1,2);
-		knowledge.setForeground(Color.MAGENTA);
+		setLGrid(Doyouknow,Doyouknowgrid,0,14,1,3);
 		
 		JLabel nul = new JLabel(" ");
 		GridBagConstraints nulgrid = null;
