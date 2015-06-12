@@ -762,7 +762,7 @@ public class Calculate extends JPanel{
 		for (int i = 0; i < arr1.length; i++){
 			arr1[i] = i;
 		}
-		ImageIcon pic1 = new ImageIcon("F1/"+arr1[1]+".PNG");
+		ImageIcon pic1 = new ImageIcon("src/F1/"+arr1[1]+".PNG");
 		
 		final JLabel Label1 = new JLabel();
 		
@@ -774,38 +774,101 @@ public class Calculate extends JPanel{
 		
 		frame1.add(Label1,BorderLayout.CENTER);
 		frame1.add(Refresh,BorderLayout.SOUTH);
+
 		
 		//ActionListener
 		Refresh.addActionListener(new ActionListener(){
+			
 			//actionPerformed
 			@Override
 			public void actionPerformed(ActionEvent e){
-				int temp = 1;
-				int randomNum = 1;
-				while(temp == randomNum){
-					temp = randomNum;
-					randomNum =(int)(Math.random()*3 + 1);  
-					Label1.setIcon(new ImageIcon("F1/"+arr1[randomNum]+".PNG"));
-				}
+				int num = (int)(Math.random()*3 + 1);
+				Label1.setIcon(new ImageIcon("src/F1/"+arr1[num]+".PNG"));
 			}
 		});
 		
 		frame1.setVisible(true);
 		frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame1.setSize(300,300);
+		frame1.setSize(700,700);
 		frame1.setTitle("健康飲食");
 		
 	}
 	
 	public void frame2(){
+		JFrame frame2 = new JFrame();
+		
+		
+		
+		ImageIcon pic1 = new ImageIcon("src/F2/"+1+".JPG");
+		final JLabel Label1 = new JLabel();
+		Label1.setIcon(pic1);
+		JScrollPane jsp = new JScrollPane(Label1);
+		
+		frame2.add(jsp);
+		
+		frame2.setVisible(true);
+		frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame2.setSize(600,600);
+		frame2.setTitle("體脂對照");
 		
 	}
 	
 	public void frame3(){
-	
+		JFrame frame3 = new JFrame();
+
+		ImageIcon pic1 = new ImageIcon("src/F3/"+1+".PNG");
+		
+		final JLabel Label1 = new JLabel();
+		JLabel lab2 = new JLabel("一公克肌肉消耗一公克脂肪組織六倍的熱量");
+		
+		Label1.setIcon(pic1);
+		
+		frame3.setLayout( new BorderLayout());
+		
+		frame3.add(lab2,BorderLayout.NORTH);
+		frame3.add(Label1,BorderLayout.CENTER);
+		
+		frame3.setVisible(true);
+		frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame3.setSize(600,700);
+		frame3.setTitle("肌肉講解");
 	}
 	
 	public void frame4(){
-	
+		JFrame frame4 = new JFrame();
+		final int[] arr1 = new int[4];
+		
+		for (int i = 0; i < arr1.length; i++){
+			arr1[i] = i;
+		}
+		ImageIcon pic1 = new ImageIcon("src/F4/"+arr1[1]+".jpg");
+		
+		final JLabel Label1 = new JLabel();
+		
+		Label1.setIcon(pic1);
+				
+		JButton Refresh = new JButton("Refresh");
+		
+		frame4.setLayout( new BorderLayout());
+		
+		frame4.add(Label1,BorderLayout.CENTER);
+		frame4.add(Refresh,BorderLayout.SOUTH);
+
+		
+		//ActionListener
+		Refresh.addActionListener(new ActionListener(){
+			
+			//actionPerformed
+			@Override
+			public void actionPerformed(ActionEvent e){
+				int num = (int)(Math.random()*3 + 1);
+				Label1.setIcon(new ImageIcon("src/F4/"+arr1[num]+".jpg"));
+			}
+		});
+		
+		frame4.setVisible(true);
+		frame4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame4.setSize(700,700);
+		frame4.setTitle("肥胖是種病");
 	}
 }

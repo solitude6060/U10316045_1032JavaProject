@@ -1,0 +1,808 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
+
+import javax.swing.*;
+
+public class Calculate extends JPanel{
+		private int genderNum = 0;
+		private int actMode = 0;
+		private int sportMode = 0;
+		private int YearOld,wishkg ;
+		private int LoseOrAdd = 0;
+		private double weightNum;
+		private double heightNum;
+		private double rice = 0;
+		private int choice = 0;
+		
+	
+	public Calculate(){
+
+		
+		
+		int[] gx = {0,4};//gridx of JLabel men & women
+		int[] gy = {1,2,3,5};//gridy of unit
+		
+		//array to store JLabel		
+		Object[] obj2 = {new JLabel("歲"),new JLabel("公斤"),new JLabel("公分"),new JLabel("公斤")};//label of unit
+		Object[] objL = {new JLabel("男 "),new JLabel("女 ")};//JLabel men & women
+		Object[] objL2 = {new JLabel("增重 "),new JLabel("減肥 ")};//JLabel
+		Object[] obj = {new JLabel("年齡 : "),new JLabel("體重 : "),new JLabel("身高 : "),
+				new JLabel("BMI : "),new JLabel("標準體重 : "),new JLabel("基礎代謝率 : "),new JLabel("運動強度 : "),new JLabel("每日需熱量 : ")};
+		
+		//String array of JComboBox
+		final String[] situation = {"躺著不動一整天","辦公室坐整天","輕度活動","中度活動","重度活動","體力勞動型"};
+		final String[] sportchoice = {"騎腳踏車","走路","慢跑","打羽毛球","打桌球","打排球","打籃球","游泳","跳繩"};
+		final String[] str = {"正確飲食在健康減重中是最重要的！","減重跟減肥是不一樣的~體脂才是關鍵！","有氧和重訓搭配才能有效減肥不復胖！","肥胖會帶來許多疾病！"};
+		
+		//JLabel
+		final JLabel gender = new JLabel("我是誰？");
+		final JLabel fit = new JLabel("穠纖合度");
+		final JLabel wish = new JLabel("我想要？");
+		JLabel cal = new JLabel("大卡");
+		JLabel cal2 = new JLabel("大卡");
+		JLabel cal3 = new JLabel("大卡");
+		final JLabel cal4 = new JLabel("大卡(X碗飯)");
+		JLabel kg = new JLabel("公斤");
+		JLabel recommend = new JLabel("建議增減重天數 : ");
+		JLabel plan = new JLabel("計畫專區");
+		JLabel days = new JLabel("天");
+		JLabel heightCal = new JLabel("每日最高熱量 : ");
+		JLabel Doyouknow = new JLabel("你知道嗎？");
+		JLabel knowledge = new JLabel("健康小常識！");
+		JLabel sportsconsump = new JLabel("請選擇運動 : ");
+		final JLabel time = new JLabel("運動多久了呢？");
+		JLabel minute = new JLabel("分鐘"); 
+		JLabel alreadyconsump = new JLabel("消耗了 : ");
+		
+		//JButton
+		JButton set = new JButton("SET");
+		JButton display = new JButton("Display");
+		
+		//JRadioButton
+		JRadioButton menbutton = new JRadioButton();
+		JRadioButton womenbutton = new JRadioButton();
+		JRadioButton loseweightbutton = new JRadioButton();
+		JRadioButton addweightbutton = new JRadioButton();
+		
+		//JTextfield
+		final JTextField TextYears = new JTextField(15);
+		TextYears.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextWeight = new JTextField(15);
+		TextWeight.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextHeight = new JTextField(15);
+		TextHeight.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextBMI = new JTextField(15);
+		TextBMI.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextgoodWeight = new JTextField(15);
+		TextgoodWeight.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextBMR = new JTextField(15);
+		TextBMR.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField Textconsump = new JTextField(15);
+		Textconsump.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextwishKg = new JTextField(5);
+		TextwishKg.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField Textrecommend = new JTextField(5);
+		Textrecommend.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextHeightCal = new JTextField(8);
+		TextHeightCal.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField Texttime = new JTextField(8);
+		Texttime.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField TextAlConsump = new JTextField(8);
+		TextAlConsump.setHorizontalAlignment(JTextField.RIGHT);
+		
+		
+		//JComboBox of people situation of action
+		JComboBox sportSituation = new JComboBox(situation);
+		JScrollPane sp = new JScrollPane(sportSituation);//put scroll into ComboBox 
+		JComboBox GeneralKnowledge = new JComboBox(str);
+		JScrollPane sp3 = new JScrollPane(GeneralKnowledge);//put scroll into ComboBox
+		
+		//JList
+		final JList ChooseSport = new JList(sportchoice);
+		ChooseSport.setVisibleRowCount(3);
+		JScrollPane sp2 = new JScrollPane(ChooseSport); 
+		
+		setLayout(new GridBagLayout());
+		
+		//set JLabel grid
+		/*
+		 *選擇男女的標籤
+		 */
+		for(int k =0; k < 2;k++){
+			GridBagConstraints LabelOfButtongrid = null;
+			setLGrid((JLabel)objL[k],LabelOfButtongrid,gx[k],0,1,1);
+			
+			setLGrid((JLabel)objL2[k],LabelOfButtongrid,gx[k],11,1,1);
+		}
+		
+		//set grid of JLabel
+		/*
+		 * 1~8行(從零開始)的標籤
+		 * 
+		 */
+		for(int i = 1; i <= 8; i++){
+			GridBagConstraints grid = null;
+			setLGrid((JLabel) obj[i-1] ,grid,0,i,1,4);
+		}
+		//單位		
+		//set grid of Unit Label
+		for(int i = 1; i <= 4; i++){
+			GridBagConstraints grid2 = null;
+			setLGrid((JLabel) obj2[i-1] ,grid2,10,gy[i-1],1,3);
+		}
+				
+		
+		
+		
+		//set grid of button men
+		GridBagConstraints menbuttongrid = new GridBagConstraints();
+		menbuttongrid.gridx = 1 ;
+		menbuttongrid.gridy = 0 ;
+		menbuttongrid.gridheight = 1 ;
+		menbuttongrid.gridwidth = 2 ;
+		menbuttongrid.fill = GridBagConstraints.NONE;
+		menbuttongrid.anchor = GridBagConstraints.CENTER;
+		add(menbutton,menbuttongrid);
+		
+		//set grid of button women
+		GridBagConstraints womenbuttongrid = new GridBagConstraints();
+		womenbuttongrid.gridx = 5 ;
+		womenbuttongrid.gridy = 0 ;
+		womenbuttongrid.gridheight = 1 ;
+		womenbuttongrid.gridwidth = 2 ;
+		womenbuttongrid.fill = GridBagConstraints.NONE;
+		womenbuttongrid.anchor = GridBagConstraints.CENTER;
+		add(womenbutton,womenbuttongrid);
+		
+		//radio button group
+		ButtonGroup Group = new ButtonGroup();
+		Group.add(menbutton);
+		Group.add(womenbutton);
+		
+		//set grid 
+		GridBagConstraints addweightgrid = new GridBagConstraints();
+		addweightgrid.gridx = 1 ;
+		addweightgrid.gridy = 11 ;
+		addweightgrid.gridheight = 1 ;
+		addweightgrid.gridwidth = 2 ;
+		addweightgrid.fill = GridBagConstraints.NONE;
+		addweightgrid.anchor = GridBagConstraints.CENTER;
+		add(addweightbutton,addweightgrid);
+		
+		//set grid of button women
+		GridBagConstraints loseweightgrid = new GridBagConstraints();
+		loseweightgrid.gridx = 5 ;
+		loseweightgrid.gridy = 11 ;
+		loseweightgrid.gridheight = 1 ;
+		loseweightgrid.gridwidth = 2 ;
+		loseweightgrid.fill = GridBagConstraints.NONE;
+		loseweightgrid.anchor = GridBagConstraints.CENTER;
+		add(loseweightbutton,loseweightgrid);
+		//radio button group
+		ButtonGroup Group2 = new ButtonGroup();
+		Group2.add(addweightbutton);
+		Group2.add(loseweightbutton);
+		
+		// set button
+		GridBagConstraints setBMIgrid = new GridBagConstraints();
+		setBMIgrid.gridx =  13 ;
+		setBMIgrid.gridy = 6;
+		setBMIgrid.gridheight = 1 ;
+		setBMIgrid.gridwidth = 1 ;
+		setBMIgrid.anchor = GridBagConstraints.CENTER;
+		add(set,setBMIgrid);
+		
+		GridBagConstraints displaygrid = new GridBagConstraints();
+		displaygrid.gridx =  9 ;
+		displaygrid.gridy = 13;
+		displaygrid.gridheight = 1 ;
+		displaygrid.gridwidth = 4 ;
+		displaygrid.anchor = GridBagConstraints.CENTER;
+		add(display,displaygrid);
+		 		
+		
+		// JLabel
+		GridBagConstraints gendergrid = null;
+		setLGrid(gender,gendergrid,7,0,1,3);
+		
+		GridBagConstraints fitgrid = null;
+		setLGrid(fit,fitgrid,10,4,1,4);
+		
+		GridBagConstraints cal2grid = null;
+		setLGrid(cal2,cal2grid,12,8,1,1);
+		//set unit
+		GridBagConstraints calgrid = null ;
+		setLGrid(cal,calgrid,12,6,1,1);
+		
+		GridBagConstraints wishgrid = null ;
+		setLGrid(wish,wishgrid,9,11,1,4);
+		
+		GridBagConstraints KGgrid = null ;
+		setLGrid(kg,KGgrid,8,11,1,1);
+		
+		GridBagConstraints daysgrid = null ;
+		setLGrid(days,daysgrid,8,12,1,1);
+		
+		GridBagConstraints cal3grid = null ;
+		setLGrid(cal3,cal3grid,8,13,1,1);
+		
+		GridBagConstraints minutegrid = null ;
+		setLGrid(minute,minutegrid,8,15,1,1);
+		
+		GridBagConstraints cal4grid = null ;
+		setLGrid(cal4,cal4grid,8,16,1,1);
+		
+		GridBagConstraints recommendgrid = null;
+		setLGrid(recommend,recommendgrid,0,12,1,4);
+		
+		GridBagConstraints heightCalgrid = null;
+		setLGrid(heightCal,heightCalgrid,0,13,1,4);
+		
+		GridBagConstraints sportsconsumpgrid = null;
+		setLGrid(sportsconsump,sportsconsumpgrid,0,14,1,4);///
+		
+		GridBagConstraints Doyouknowgrid = null;
+		setLGrid(Doyouknow,Doyouknowgrid,0,18,1,1);
+		Doyouknow.setForeground(Color.red);
+		
+		GridBagConstraints knowledgegrid = null;
+		setLGrid(knowledge,knowledgegrid,6,18,1,2);
+		knowledge.setForeground(Color.MAGENTA);
+		
+		JLabel nul = new JLabel(" ");
+		GridBagConstraints nulgrid = null;
+		setLGrid(nul,nulgrid,0,9,1,5);
+		
+		JLabel nul2 = new JLabel(" ");
+		GridBagConstraints nul2grid = null;
+		setLGrid(nul2,nul2grid,0,17,1,1);
+		
+		JLabel nul3 = new JLabel(" ");
+		GridBagConstraints nul3grid = null;
+		setLGrid(nul3,nul3grid,0,19,1,1);
+		
+		GridBagConstraints plangrid = null;
+		setLGrid(plan,plangrid,0,10,1,1);
+		plan.setForeground(Color.red);
+		//plan.setFont(new Font("標楷體", Font.BOLD, 17));
+	
+		GridBagConstraints timegrid = null;
+		setLGrid(time,timegrid,0,15,1,4);
+		
+		GridBagConstraints alreadyconsumpgrid = null;
+		setLGrid(alreadyconsump,alreadyconsumpgrid,0,16,1,4);
+		
+		
+		// TextField
+		GridBagConstraints yearsTextgrid = null;
+		setTGrid(TextYears,yearsTextgrid,7,1,1,3);
+		
+		GridBagConstraints weightTextgrid = null;
+		setTGrid(TextWeight,weightTextgrid,7,2,1,3);
+		
+		GridBagConstraints heightTextgrid = null;
+		setTGrid(TextHeight,heightTextgrid,7,3,1,3);
+		
+		GridBagConstraints TextBMIgrid =null;
+		setTGrid(TextBMI,TextBMIgrid,7,4,1,3);
+		
+		GridBagConstraints TextgoodWeightgrid = null;
+		setTGrid(TextgoodWeight,TextgoodWeightgrid,7,5,1,3);
+		
+		GridBagConstraints TextBMRgrid = null;
+		setTGrid(TextBMR,TextBMRgrid,7,6,1,3);
+		
+		GridBagConstraints Textconsumptiongrid = null;
+		setTGrid(Textconsump,Textconsumptiongrid,7,8,1,3);
+		
+		GridBagConstraints TextwishKGgrid = null;
+		setTGrid(TextwishKg,TextwishKGgrid,7,11,1,1);
+		
+		GridBagConstraints Textrecommendgrid = null;
+		setTGrid(Textrecommend,Textrecommendgrid,7,12,1,1);
+		
+		GridBagConstraints TextHeightCalgrid = null;
+		setTGrid(TextHeightCal,TextHeightCalgrid,6,13,1,2);
+		
+		GridBagConstraints Texttimegrid = null;
+		setTGrid(Texttime,Texttimegrid,6,15,1,2);
+		
+		GridBagConstraints TextAlConsumpgrid = null;
+		setTGrid(TextAlConsump,TextAlConsumpgrid,6,16,1,2);
+		
+		//set grid of sportSituation ComboBox
+		GridBagConstraints comboboxgrid = new GridBagConstraints();
+		comboboxgrid.gridx = 7 ;
+		comboboxgrid.gridy = 7 ;
+		comboboxgrid.gridheight = 1 ;
+		comboboxgrid.gridwidth = 3 ;
+		comboboxgrid.fill = GridBagConstraints.NONE;
+		comboboxgrid.anchor = GridBagConstraints.CENTER;
+		add(sp,comboboxgrid);
+		
+		GridBagConstraints combobox2grid = new GridBagConstraints();
+		combobox2grid.gridx = 0 ;
+		combobox2grid.gridy = 20 ;
+		combobox2grid.gridheight = 1 ;
+		combobox2grid.gridwidth = 10 ;
+		combobox2grid.fill = GridBagConstraints.NONE;
+		combobox2grid.anchor = GridBagConstraints.CENTER;
+		add(sp3,combobox2grid);
+		
+		GridBagConstraints listgrid = new GridBagConstraints();
+		listgrid.gridx = 6 ;
+		listgrid.gridy = 14 ;
+		listgrid.gridheight = 1 ;
+		listgrid.gridwidth = 2 ;
+		listgrid.fill = GridBagConstraints.NONE;
+		listgrid.anchor = GridBagConstraints.CENTER;
+		add(sp2,listgrid);
+		
+		
+		
+		
+		/*
+		 * ActionListener
+		 */
+		//men button ActionListener
+		menbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				genderNum = 1;//set gender =  men
+				gender.setText("我是帥哥");
+			}
+		});
+				
+		//women button ActionListener
+		womenbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				genderNum = 2;//set gender = women
+				gender.setText("我是正咩");
+			}
+		});
+		
+		addweightbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				setLorA(1);
+				wish.setText("我要健康增重");
+			}
+		});
+		
+		loseweightbutton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				setLorA(2);
+				wish.setText("阿肥要減肥！！");
+			}
+		});
+				
+				
+		//Years TextField ActionListener
+		TextYears.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				YearOld = (int) Double.parseDouble(TextYears.getText());
+				setGenderText(gender,YearOld,genderNum);
+				
+			}
+		});
+		
+		display.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				wishkg = (int) Double.parseDouble(TextwishKg.getText());
+				Textrecommend.setText(String.valueOf(setDayNum(wishkg)*7)+" ~ "+wishkg*7);
+				int total = (int) Double.parseDouble(Textconsump.getText()); 
+				int result = 0;
+				int result2 = 0; 
+				if(getLorA() == 2){
+					result = total - 1100;
+					result2 = total -(int) (1100*1.5);
+				}
+				else{
+					result = total +(int) (1100*1.5);
+					result2 = total + 1100; 
+				}
+				TextHeightCal.setText(String.valueOf(Max(result2,result)));
+			}
+		});
+		
+		//set BMi, BMR, suitable weight ActionListener
+		set.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				weightNum = Double.parseDouble(TextWeight.getText());
+				heightNum = Double.parseDouble(TextHeight.getText());
+				YearOld = (int) Double.parseDouble(TextYears.getText());
+				double bmiNUM = BMI(weightNum,heightNum);
+				
+				TextBMI.setText(String.valueOf(bmiNUM));
+				TextgoodWeight.setText(String.valueOf(LowerSuitWeight(YearOld,heightNum))+" ~ "+String.valueOf(UpperSuitWeight(YearOld,heightNum)));
+				TextBMR.setText(String.valueOf(BMR(weightNum, heightNum, YearOld, genderNum)));
+					
+				setFit(fit,YearOld,heightNum);
+				
+			}//end actionPerfromed
+		});
+		
+		sportSituation.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				//get string which user choose
+				JComboBox tmp = (JComboBox) e.getSource();
+				String str2 = (String) tmp.getSelectedItem();
+				//set the mode of action
+				for(int h = 0; h < 6; h++){
+					if(str2.equals(situation[h])){
+						actMode = h+1;
+					}//end if
+				}//end for
+				
+				Textconsump.setText(String.valueOf((int)(actIntensity(actMode)*BMR(weightNum, heightNum, YearOld, genderNum))));
+				
+			}//end actionPerfromed
+		});
+		
+		GeneralKnowledge.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				//get string which user choose
+				JComboBox tmp = (JComboBox) e.getSource();
+				String str1 = (String) tmp.getSelectedItem();
+				
+				for(int h = 0; h < 4; h++){
+					if(str1.equals(str[h])){
+						choice = h+1;
+					}//end if
+				}//end for
+				
+				newframe(choice);
+			}
+		});
+		
+		Texttime.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				int sporttime = Integer.parseInt(Texttime.getText());
+				weightNum = Double.parseDouble(TextWeight.getText());
+				rice = (consumpCal(getsportMode(),sporttime,(int)weightNum)/200);
+				
+				DecimalFormat DF = new DecimalFormat("0.00");
+				
+				cal4.setText("大卡(" + DF.format(rice) + "碗飯)");
+				TextAlConsump.setText(String.valueOf(DF.format(consumpCal(getsportMode(),sporttime,(int)weightNum))));
+				TextHeightCal.setText(String.valueOf(DF.format(Integer.parseInt(TextHeightCal.getText()) + consumpCal(getsportMode(),sporttime,(int)weightNum))));
+			}
+		});
+		
+		/*
+		 * 
+		 * mouse listener
+		 */
+		ChooseSport.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				if (e.getClickCount() == 2){
+					String tmp = (String) ChooseSport.getSelectedValue();
+					for(int h = 0; h < 9; h++){
+						if(tmp.equals(sportchoice[h])){
+							sportMode = h+1;
+							setsportMode(sportMode);
+						}//end if
+					}//end for
+					time.setText(tmp+"多久了？");
+				}//end if		
+			}//end mouseClicked
+		});
+	}
+	
+	/*
+	 * 
+	 * 
+	 * method
+	 * 
+	 * 
+	 */
+	public int Max(int num1,int num2){
+		if(num1 >= num2 ){
+			return num1;
+		}
+		else{
+			return num2;
+		}
+	}
+	
+	public void setLorA(int LoseOrAdd){
+		this.LoseOrAdd = LoseOrAdd;
+	}
+	
+	public int getLorA(){
+		return this.LoseOrAdd;
+	}
+	
+	public int setDayNum(int wishkg){
+		int day = (int)(wishkg/1.5);
+		return day;
+	}
+	
+	public void setsportMode(int sportMode){
+		this.sportMode = sportMode;
+	}
+	
+	public int getsportMode(){
+		return this.sportMode;
+	}
+	
+	//set genderTextField method
+	public void setGenderText(JLabel gender,int YearOld,int genderNum){
+		if((genderNum == 1) && (YearOld <= 10 )){
+			gender.setText("我是正太！");
+		}
+		else if((genderNum == 1) && (YearOld > 65 )){
+			gender.setText("我是老爺爺");
+		}
+		else if((genderNum == 1) && (YearOld > 12) && (YearOld < 19)){
+			gender.setText("我是小鮮肉！");
+		}
+		else if((genderNum == 2) && (YearOld <= 10 )){
+			gender.setText("我是可愛小蘿莉！");
+		}
+		else if((genderNum == 2) && (YearOld > 12) && (YearOld < 19)){
+			gender.setText("我是清純少女啾咪 >.^");
+		}
+		else if((genderNum == 2) && (YearOld > 65 )){
+			gender.setText("我是老奶奶");
+		}
+		else{
+			if(genderNum == 1){
+				gender.setText("我是帥哥");
+			}
+			else{
+				gender.setText("我是正咩");
+			}
+		}
+	}
+	
+	//set grid of TextFeild method
+	public void setTGrid(JTextField jtf, GridBagConstraints thegrid, int x, int y, int gheight, int gwidth){
+		thegrid = new GridBagConstraints();
+		thegrid.gridx = x ;
+		thegrid.gridy = y;
+		thegrid.gridheight = gheight;
+		thegrid.gridwidth = gwidth;
+		thegrid.fill = GridBagConstraints.NONE;
+		thegrid.anchor = GridBagConstraints.CENTER;
+		add(jtf,thegrid);
+	}
+	
+	//set grid of Label method
+	public void setLGrid(JLabel jbl, GridBagConstraints thegrid, int x, int y, int gheight, int gwidth){
+		thegrid = new GridBagConstraints();
+		thegrid.gridx = x ;
+		thegrid.gridy = y;
+		thegrid.gridheight = gheight;
+		thegrid.gridwidth = gwidth;
+		thegrid.fill = GridBagConstraints.NONE;
+		thegrid.anchor = GridBagConstraints.CENTER;
+		add(jbl,thegrid);
+	}
+	
+	//set JLabel fit method
+	public void setFit(JLabel fit,int YearOld,double heightNum){
+		if(weightNum < LowerSuitWeight(YearOld,heightNum)){
+			fit.setText("拒當紙片人");
+		}
+		else if(weightNum > UpperSuitWeight(YearOld,heightNum) && genderNum == 1){
+			fit.setText("肥宅是你！"); 
+		}
+		else if(weightNum > UpperSuitWeight(YearOld,heightNum) && genderNum == 2){
+			fit.setText("你是小腹婆~~~"); 
+		}
+		else{
+			if(genderNum == 1){
+			fit.setText("六塊肌 <(ˉ^ˉ)>");
+			}
+			else{
+			fit.setText("馬甲線 <)。(> ");
+			}
+		}
+	}
+	
+	//calculate BMI method
+	public int BMI(double weight, double height){
+		double heightOfMeter = height/100;
+		double BMI = weight/(heightOfMeter*heightOfMeter);
+		return (int)(BMI);
+	}
+	
+	//calculate BMR method
+	public int BMR(double weight, double height, int year, int gender){
+		int BMR = 0;
+		if(gender == 1){
+			BMR = (int) ((13.7*weight)+(5.0*height)-(6.8*year)+66) ;
+		}
+		else{
+			BMR = (int)((9.6*weight)+(1.8*height)-(4.7*year)+655);
+		}
+		return BMR;
+	}
+	
+	/*
+	 * intensity
+	活動係數 1 ==>基礎代謝量（躺著不動一整天）
+	活動係數 1.2 ==>辦公室坐整天型（幾乎很少或沒運動）
+	活動係數 1.375==>輕度活動型（每週運動1-2次）
+	活動係數 1.55==>中度運動型（每週運動3到5次）
+	活動係數 1.725==>重度運動型（每週運動6-7次）
+	活動係數 1.9==>體力勞動型（每天重度運動或重勞力工作者）
+	*
+	*/
+	public double actIntensity(int actMode){
+		double intensity = 0;
+		//mode case
+		switch(actMode){
+		case 1:intensity = 1;break;
+		case 2:intensity = 1.2;break;
+		case 3:intensity = 1.375;break;
+		case 4:intensity = 1.55;break;
+		case 5:intensity = 1.725;break;
+		case 6:intensity = 1.9;break;
+		}//end switch
+		return intensity;
+	}
+	
+	// calculate appropriate weight method
+	public int LowerSuitWeight(int year, double height){
+		double suitbmi = 0;
+		double heightOfMeter = height/100;
+		double goodweight1;
+		if(year <= 18){
+			switch(year){
+			case 2:suitbmi = 15.2;break;
+			case 3:suitbmi = 14.8;break;
+			case 4:suitbmi = 14.4;break;
+			case 5:suitbmi = 14;break;
+			case 6:suitbmi = 13.9;break;
+			case 7:suitbmi = 14.7;break;
+			case 8:suitbmi = 15;break;
+			case 9:suitbmi = 15.2;break;
+			case 10:suitbmi = 15.4;break;
+			case 11:suitbmi = 15.8;break;
+			case 12:suitbmi = 16.4;break;
+			case 13:suitbmi = 17.0;break;
+			case 14:suitbmi = 17.6;break;
+			case 15:suitbmi = 18.2;break;
+			case 16:suitbmi = 18.6;break;
+			case 17:suitbmi = 19;break;
+			case 18:suitbmi = 19.2;break;
+			}//end switch
+			goodweight1 = suitbmi*Math.pow((heightOfMeter), 2);
+		}//end if
+		else{
+			goodweight1 = 18.5*Math.pow((heightOfMeter), 2);
+		}//end else
+		return (int)(goodweight1);
+		
+	}
+	
+	// calculate appropriate weight method
+	public int UpperSuitWeight(int year, double height){
+		double suitbmi = 0;
+		double heightOfMeter = height/100;
+		double goodweight2 = 0;
+		if(year <= 18){
+			switch(year){
+			case 2:suitbmi = 17.7;break;
+			case 3:suitbmi = 17.7;break;
+			case 4:suitbmi = 17.7;break;
+			case 5:suitbmi = 17.7;break;
+			case 6:suitbmi = 17.9;break;
+			case 7:suitbmi = 18.6;break;
+			case 8:suitbmi = 19.3;break;
+			case 9:suitbmi = 19.7;break;
+			case 10:suitbmi = 20.3;break;
+			case 11:suitbmi = 21;break;
+			case 12:suitbmi = 21.5;break;
+			case 13:suitbmi = 22.2;break;
+			case 14:suitbmi = 22.7;break;
+			case 15:suitbmi = 23.1;break;
+			case 16:suitbmi = 23.4;break;
+			case 17:suitbmi = 23.6;break;
+			case 18:suitbmi = 23.7;break;
+			}//end switch
+			goodweight2 = suitbmi*Math.pow((heightOfMeter), 2);
+		}//end if
+		else{
+			goodweight2 = 24*Math.pow((heightOfMeter), 2);
+		}//end else
+		
+		return (int)(goodweight2);
+	}
+	//"騎腳踏車","走路","慢跑","打羽毛球","打桌球","打排球","打籃球","游泳","跳繩"
+	public double consumpCal(int sportMode,int sporttime,int weight){
+		double Basecal = 0;
+		double consumption = 0;
+		double percent = ((double)sporttime/30);
+		int diff = (weight - 50)/5;
+		
+		switch(sportMode){
+		case 1:Basecal = 75 ;break;
+		case 2:Basecal = 77.4;break;
+		case 3:Basecal = 235;break;
+		case 4:Basecal = 127.5;break;
+		case 5:Basecal = 132.6;break;
+		case 6:Basecal = 127.5;break;
+		case 7:Basecal = 250;break; 
+		case 8:Basecal = 435;break;
+		case 9:Basecal = 225;break; 
+		}
+		
+	
+		consumption = percent*Basecal*(1+0.1*diff);
+		return consumption;
+	}
+	
+	public void newframe(int choice){
+		switch(choice){
+		case 1 : frame1();break;
+		case 2 : frame2();break;
+		case 3 : frame3();break;
+		case 4 : frame4();break;
+		}
+	}
+	//"正確飲食在健康減重中是最重要的！","減重跟減肥是不一樣的~體脂才是關鍵！","有氧和重訓搭配才能有效減肥不復胖！","肥胖會帶來許多疾病！"
+	public void frame1(){
+		JFrame frame1 = new JFrame();
+		final int[] arr1 = new int[4];
+		
+		for (int i = 0; i < arr1.length; i++){
+			arr1[i] = i;
+		}
+		ImageIcon pic1 = new ImageIcon("src/F1/"+arr1[1]+".PNG");
+		
+		final JLabel Label1 = new JLabel();
+		
+		Label1.setIcon(pic1);
+				
+		JButton Refresh = new JButton("Refresh");
+		
+		frame1.setLayout( new BorderLayout());
+		
+		frame1.add(Label1,BorderLayout.CENTER);
+		frame1.add(Refresh,BorderLayout.SOUTH);
+
+		final int num = (int)(Math.random()*3 + 1);
+		//ActionListener
+		Refresh.addActionListener(new ActionListener(){
+			
+			//actionPerformed
+			@Override
+			public void actionPerformed(ActionEvent e){
+				
+				Label1.setIcon(new ImageIcon("src/F1/"+arr1[num]+".PNG"));
+			}
+		});
+		
+		frame1.setVisible(true);
+		frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame1.setSize(500,500);
+		frame1.setTitle("健康飲食");
+		
+	}
+	
+	public void frame2(){
+		
+	}
+	
+	public void frame3(){
+	
+	}
+	
+	public void frame4(){
+	
+	}
+}
