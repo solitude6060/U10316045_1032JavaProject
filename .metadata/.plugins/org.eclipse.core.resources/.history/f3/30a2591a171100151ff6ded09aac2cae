@@ -1,0 +1,8 @@
+package snippet;
+
+public class Snippet {
+	public static void main(String[] args) {
+		 new ImageIcon(("this.getClass().getResourceAsStream(src/F4/"+arr1[1]+".jpg"));
+	}
+}
+
