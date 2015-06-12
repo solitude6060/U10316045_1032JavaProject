@@ -14,6 +14,7 @@ public class Calculate extends JPanel{
 		private double weightNum;
 		private double heightNum;
 		private double rice = 0;
+		private int choice = 0;
 		
 	
 	public Calculate(){
@@ -33,6 +34,7 @@ public class Calculate extends JPanel{
 		//String array of JComboBox
 		final String[] situation = {"躺著不動一整天","辦公室坐整天","輕度活動","中度活動","重度活動","體力勞動型"};
 		final String[] sportchoice = {"騎腳踏車","走路","慢跑","打羽毛球","打桌球","打排球","打籃球","游泳","跳繩"};
+		final String[] str = {"正確飲食在健康減重中是最重要的！","減重跟減肥是不一樣的~體脂才是關鍵！","有氧和重訓搭配才能有效減肥不復胖！","肥胖會帶來許多疾病！"};
 		
 		//JLabel
 		final JLabel gender = new JLabel("我是誰？");
@@ -94,7 +96,7 @@ public class Calculate extends JPanel{
 		//JComboBox of people situation of action
 		JComboBox sportSituation = new JComboBox(situation);
 		JScrollPane sp = new JScrollPane(sportSituation);//put scroll into ComboBox 
-		JComboBox GeneralKnowledge = new JComboBox();
+		JComboBox GeneralKnowledge = new JComboBox(str);
 		JScrollPane sp3 = new JScrollPane(GeneralKnowledge);//put scroll into ComboBox
 		
 		//JList
@@ -257,6 +259,10 @@ public class Calculate extends JPanel{
 		GridBagConstraints nul2grid = null;
 		setLGrid(nul2,nul2grid,0,17,1,1);
 		
+		JLabel nul3 = new JLabel(" ");
+		GridBagConstraints nul3grid = null;
+		setLGrid(nul3,nul3grid,0,19,1,1);
+		
 		GridBagConstraints plangrid = null;
 		setLGrid(plan,plangrid,0,10,1,1);
 		plan.setForeground(Color.red);
@@ -315,6 +321,15 @@ public class Calculate extends JPanel{
 		comboboxgrid.fill = GridBagConstraints.NONE;
 		comboboxgrid.anchor = GridBagConstraints.CENTER;
 		add(sp,comboboxgrid);
+		
+		GridBagConstraints combobox2grid = new GridBagConstraints();
+		combobox2grid.gridx = 0 ;
+		combobox2grid.gridy = 20 ;
+		combobox2grid.gridheight = 1 ;
+		combobox2grid.gridwidth = 10 ;
+		combobox2grid.fill = GridBagConstraints.NONE;
+		combobox2grid.anchor = GridBagConstraints.CENTER;
+		add(sp3,combobox2grid);
 		
 		GridBagConstraints listgrid = new GridBagConstraints();
 		listgrid.gridx = 6 ;
@@ -419,10 +434,10 @@ public class Calculate extends JPanel{
 			public void actionPerformed(ActionEvent e){
 				//get string which user choose
 				JComboBox tmp = (JComboBox) e.getSource();
-				String str = (String) tmp.getSelectedItem();
+				String str2 = (String) tmp.getSelectedItem();
 				//set the mode of action
 				for(int h = 0; h < 6; h++){
-					if(str.equals(situation[h])){
+					if(str2.equals(situation[h])){
 						actMode = h+1;
 					}//end if
 				}//end for
@@ -430,6 +445,23 @@ public class Calculate extends JPanel{
 				Textconsump.setText(String.valueOf((int)(actIntensity(actMode)*BMR(weightNum, heightNum, YearOld, genderNum))));
 				
 			}//end actionPerfromed
+		});
+		
+		GeneralKnowledge.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				//get string which user choose
+				JComboBox tmp = (JComboBox) e.getSource();
+				String str1 = (String) tmp.getSelectedItem();
+				
+				for(int h = 0; h < 4; h++){
+					if(str1.equals(str[h])){
+						choice = h+1;
+					}//end if
+				}//end for
+				
+				newframe(choice);
+			}
 		});
 		
 		Texttime.addActionListener(new ActionListener(){
@@ -714,6 +746,66 @@ public class Calculate extends JPanel{
 		return consumption;
 	}
 	
+	public void newframe(int choice){
+		switch(choice){
+		case 1 : frame1();break;
+		case 2 : frame2();break;
+		case 3 : frame3();break;
+		case 4 : frame4();break;
+		}
+	}
+	//"正確飲食在健康減重中是最重要的！","減重跟減肥是不一樣的~體脂才是關鍵！","有氧和重訓搭配才能有效減肥不復胖！","肥胖會帶來許多疾病！"
+	public void frame1(){
+		JFrame frame1 = new JFrame();
+		final int[] arr1 = new int[4];
+		
+		for (int i = 0; i < arr1.length; i++){
+			arr1[i] = i;
+		}
+		ImageIcon pic1 = new ImageIcon("F1/"+arr1[1]+".PNG");
+		
+		final JLabel Label1 = new JLabel();
+		
+		Label1.setIcon(pic1);
+				
+		JButton Refresh = new JButton("Refresh");
+		
+		frame1.setLayout( new BorderLayout());
+		
+		frame1.add(Label1,BorderLayout.CENTER);
+		frame1.add(Refresh,BorderLayout.SOUTH);
+		
+		//ActionListener
+		Refresh.addActionListener(new ActionListener(){
+			//actionPerformed
+			@Override
+			public void actionPerformed(ActionEvent e){
+				int temp = 1;
+				int randomNum = 1;
+				while(temp == randomNum){
+					temp = randomNum;
+					randomNum =(int)(Math.random()*3 + 1);  
+					Label1.setIcon(new ImageIcon("F1/"+arr1[randomNum]+".PNG"));
+				}
+			}
+		});
+		
+		frame1.setVisible(true);
+		frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame1.setSize(300,300);
+		frame1.setTitle("健康飲食");
+		
+	}
 	
+	public void frame2(){
+		
+	}
 	
+	public void frame3(){
+	
+	}
+	
+	public void frame4(){
+	
+	}
 }
