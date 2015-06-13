@@ -870,6 +870,7 @@ public class Calculate extends JPanel{
 		frame4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame4.setSize(700,700);
 		frame4.setTitle("ªÎ­D¬OºØ¯f");
-		
 	}
 }
+
+
