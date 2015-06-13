@@ -872,5 +872,3 @@ public class Calculate extends JPanel{
 		frame4.setTitle("ªÎ­D¬OºØ¯f");
 	}
 }
-
-

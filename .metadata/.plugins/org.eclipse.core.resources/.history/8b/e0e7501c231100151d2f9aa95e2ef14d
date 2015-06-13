@@ -816,7 +816,7 @@ public class Calculate extends JPanel{
 	public void frame3(){
 		JFrame frame3 = new JFrame();
 
-		ImageIcon pic1 =  new ImageIcon("src/F3/"+1+".PNG");
+		ImageIcon pic1 =  new ImageIcon(Calculate.class.getResource("src/F3/"+1+".PNG"));
 		
 		final JLabel Label1 = new JLabel();
 		JLabel lab2 = new JLabel("一公克肌肉消耗一公克脂肪組織六倍的熱量");
@@ -841,7 +841,7 @@ public class Calculate extends JPanel{
 		for (int i = 0; i < arr1.length; i++){
 			arr1[i] = i;
 		}
-		ImageIcon pic1 = new ImageIcon("src/F4/"+arr1[1]+".jpg");
+		ImageIcon pic1 = new ImageIcon(Calculate.class.getResource("src/F4/"+arr1[1]+".jpg"));
 		
 		final JLabel Label1 = new JLabel();
 		
@@ -862,7 +862,7 @@ public class Calculate extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				int num = (int)(Math.random()*3 + 1);
-				Label1.setIcon(new ImageIcon("src/F4/"+arr1[num]+".jpg"));
+				Label1.setIcon(new ImageIcon(Calculate.class.getResource("src/F4/"+arr1[num]+".jpg")));
 			}
 		});
 		

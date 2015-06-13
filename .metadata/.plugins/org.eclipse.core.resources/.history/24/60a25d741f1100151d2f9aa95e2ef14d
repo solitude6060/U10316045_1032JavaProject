@@ -862,7 +862,7 @@ public class Calculate extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				int num = (int)(Math.random()*3 + 1);
-				Label1.setIcon(new ImageIcon("src/F4/"+arr1[num]+".jpg"));
+				Label1.setIcon(new ImageIcon(this.getClass().getResource("src/F4/"+arr1[num]+".jpg")));
 			}
 		});
 		
