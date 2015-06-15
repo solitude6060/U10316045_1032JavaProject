@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Label1" key="selection"/>
+		<item value="frame" key="selection"/>
 		<list key="findhistory">
+			<item value="frame"/>
+			<item value="print"/>
+			<item value="System"/>
 			<item value="CardLabel1"/>
 			<item value="sporttime"/>
 			<item value="weight"/>
 			<item value="15"/>
 			<item value="combobox"/>
-			<item value="display"/>
-			<item value="wish"/>
-			<item value="recommend"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Label1"/>
